@@ -1,0 +1,512 @@
+/* Estilo geral */
+.bagel-fat-one-regular {
+  font-family: "Bagel Fat One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #0A1A3A;
+    height: 100vh;
+}
+
+.interface{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flex{
+    display: flex;
+}
+
+.btn-contato button{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #2EC4B6;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+button:hover, form .btn-enviar input[type=submit]:hover{
+    box-shadow: 9px 9px 8px rgb(0, 110, 138);
+    border-radius: 30px;
+    transition: .2s;
+    transform: scale(1.05);
+}
+
+h2.titulo{
+    color: white;
+    font-size: 38px;
+    text-align: center;
+}
+
+h2.titulo span{
+    color: #2EC4B6;
+}
+
+.btn-social button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #2EC4B6;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+/* Fim do estilo geral */
+
+
+/* Estilo do cabecalho */
+
+header{
+    padding: 40px 4%;
+}
+
+    /* Especificando que queremos a classe interface que esta dentro do header */
+header > .interface{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a{
+    color: rgb(87, 87, 87);
+    text-decoration: none;
+    display: inline-block;
+}
+
+header nav.menu-desktop a:hover{
+    color: white;
+    transform: scale(1.05);
+    transition: .2s;
+}
+
+header nav ul{
+    list-style-type: none;
+}
+
+header nav.menu-desktop ul li{
+    display: inline-block;
+    padding: 0 40px;
+}
+
+/* Estilo mobile menu */
+.btn-abrir-menu{
+    display: none;
+}
+
+.btn-abrir-menu i{
+    color: #2EC4B6;
+    font-size: 40px;
+}
+
+.menu-mobile{
+    background-color: #0A1A3A;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile nav ul{
+    text-align: right;
+}
+
+.menu-mobile nav ul li a{
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 8%;
+    display: block;
+}
+
+.menu-mobile nav ul li a:hover{
+    background-color: #2EC4B6;
+    color: black;
+}
+
+.menu-mobile .btn-fechar{
+    padding: 20px 5%;
+}
+
+.menu-mobile.abrir-menu{
+    width: 70%;
+}
+
+.menu-mobile.abrir-menu ~ .overlay-menu{
+    display: block;
+}
+
+.menu-mobile .btn-fechar i{
+    color: #2EC4B6;
+    font-size: 30px;
+}
+
+.overlay-menu{
+    background-color: rgba(0, 0, 0, 0.562);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 88888;
+    display: none;
+}
+
+/* Fim do estilo do cabecalho */
+
+
+/* ESTILO DO SITE */
+section.topo-do-site{
+    padding: 40px 4%;
+}
+
+section.topo-do-site.flex{
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+}
+
+.topo-do-site h1{
+    color: white;
+    font-size: 42px;
+    line-height: 40px;
+}
+
+.topo-do-site .txt-topo-site h1 span{
+    color: #2EC4B6;
+    font-size: 84px;
+}
+
+.topo-do-site .txt-topo-site p{
+    color: white;
+    margin: 40px 0;
+}
+
+
+.topo-do-site .img-topo-site img{
+    position: relative;
+    animation: flutuar 2s ease-in-out infinite alternate;
+    border-radius: 30px;
+}
+/* FIm do estilo do site */
+
+
+/* ANIMACOES */
+@keyframes flutuar {
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 30%;
+    }
+}
+/* Fim das animacoes */
+
+
+/* Especialidades */
+section.especialidades{
+    padding: 40px 4%;
+}
+
+section.especialidades .flex{
+    gap: 60px;
+}
+
+.especialidades .especialidades-box{
+    color: white;
+    padding: 40px;
+    margin-top: 45px;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.especialidades .especialidades-box:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.363);
+}
+
+.especialidades .especialidades-box i{
+    font-size: 70px;
+    color: #2EC4B6;
+}
+
+.especialidades .especialidades-box h3{
+    font-size: 28px;
+    margin: 15px 0;
+}
+/* Fim especialidades */
+
+
+/* sobre */
+section.sobre{
+    padding: 80px 4%;
+}
+
+section.sobre .flex{
+    align-items: center;
+    gap: 60px;
+}
+
+.sobre .txt-sobre{
+    color: white;
+}
+
+.sobre .txt-sobre h2{
+    font-size: 40px;
+    margin-bottom: 30px;
+    line-height: 40px;
+}
+
+.sobre .txt-sobre h2 span{
+    color: #2EC4B6;
+    display: block;
+}
+
+.sobre .txt-sobre p span{
+    color: #2EC4B6;
+}
+
+.sobre .txt-sobre p{
+    margin: 20px 0;
+    text-align: justify;
+}
+/* fim sobre */
+
+
+/* Portfolio */
+section.portfolio{
+    padding: 80px 4%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.062);
+}
+
+section.portfolio .flex{
+    justify-content: space-around;
+    margin-top: 60px;
+}
+
+.img-port{
+    width: 360px;
+    height: 460px;
+    background-size: cover;
+    background-position: 100% 0%;
+    transition: 8s;
+    border-radius: 30px;
+    position: relative;
+}
+
+.img-port:hover{
+    background-position: 100% 100%;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000b2;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    opacity: 0;
+    transition: .5s;
+}
+
+.overlay:hover{
+    opacity: 1;
+}
+
+.frame{
+     width: 360px;
+    height: 460px;
+    background-size: cover;
+    background-position: 100% 0%;
+    transition: 8s;
+    border-radius: 30px;
+    position: relative;
+}
+
+.frame:hover{
+    background-position: 100% 100%;
+}
+/* fim portfolio */
+
+
+/* FORMULARIO */
+section.formulario{
+    padding: 80px 4%;
+}
+
+form{
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+form input, form textarea{
+    width: 100%;
+    background-color: rgba(73, 73, 73, 0.514);
+    border: 0;
+    outline: 0;
+    padding: 20px 15px;
+    border-radius: 30px;
+    color: white;
+    font-size: 18px;
+}
+
+form textarea{
+    resize: none;
+    max-height: 200px;
+}
+
+form .btn-enviar{
+    margin-top: 20px;
+    text-align: center;
+}
+
+form .btn-enviar input[type=submit]{
+    width: 120px;
+    background-color: #2EC4B6;
+    color: black;
+    cursor: pointer;
+    font-weight: 700;
+    transition: .2s;
+}
+/* fim formulario */
+
+
+/* roda pe */
+footer{
+    padding: 40px 4%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.062);
+}
+
+footer .flex{
+    justify-content: space-between;
+}
+
+footer .line-footer{
+    padding: 22px;
+}
+
+.borda{
+    border-bottom: 2px solid #2EC4B6;
+}
+
+footer .line-footer p i{
+    color: #2EC4B6;
+    font-size: 22px;
+}
+
+footer .line-footer p a{
+    color: white;
+}
+/* fim formulario */
+
+
+/* responsividade */
+@media screen and (max-width: 1020px) {
+    .btn-abrir-menu{
+        display: flex;
+    }
+
+    /* classes gerais */
+    .flex{
+        flex-direction: column;
+    }
+    h2.titulo{
+        font-size: 34px;
+        line-height: 30px;
+    }
+
+    /* Cabecalio */
+    .menu-desktop, .btn-contato{
+        display: none;
+    }
+
+    /* top so site */
+    section.topo-do-site{
+        padding: 29px 8%;
+    }
+
+    .topo-do-site h1{
+        font-size: 30px;
+    }
+
+    .topo-do-site .img-topo-site{
+        text-align: center;
+    }
+
+    /* especialidades */
+    section.especialidades{
+        padding: 40px 8%;
+    }
+
+    /* sobre */
+    section.sobre{
+        padding: 80px 8%;
+    }
+
+    .sobre .txt-sobre h2{
+        font-size: 34px;
+        line-height: 35px;
+        text-align: center;
+    }
+
+    .btn-social{
+        text-align: center;
+    }
+
+    .img-sobre img{
+        width: 100%;
+    }
+
+    /* Portfolio */
+    section.portfolio{
+        padding: 80px 8%;
+    }
+
+    .img-port{
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    section.portfolio .flex{
+        gap: 60px;
+    }
+
+    /* rodape */
+    footer .flex{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    footer .line-footer{
+        text-align: center;
+    }
+}
+/* fim responsividade */
