@@ -336,7 +336,7 @@ section.portfolio .flex{
 }
 
 .frame{
-     width: 360px;
+    width: 360px;
     height: 460px;
     background-size: cover;
     background-position: 100% 0%;
@@ -449,7 +449,7 @@ footer .line-footer p a{
 
     /* top so site */
     section.topo-do-site{
-        padding: 29px 8%;
+        padding: 30px 8%;
     }
 
     .topo-do-site h1{
@@ -457,6 +457,7 @@ footer .line-footer p a{
     }
 
     .topo-do-site .img-topo-site{
+        height: 330px;
         text-align: center;
     }
 
@@ -508,5 +509,7 @@ footer .line-footer p a{
     footer .line-footer{
         text-align: center;
     }
+
+   
 }
 /* fim responsividade */
