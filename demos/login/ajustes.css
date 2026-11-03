@@ -1,0 +1,74 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #201b2c;
+}
+.main-login {
+  min-height: calc(100svh - 70px);
+  height: auto;
+  padding: 40px 24px;
+  gap: 32px;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+}
+.left-login {
+  height: auto;
+  width: 50%;
+}
+.left-login h1 {
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+.right-login {
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.card-login {
+  width: 100%;
+  max-width: 420px;
+  padding: 28px;
+}
+.card-login > h2 {
+  color: #00ff88;
+  font-size: 2rem;
+  margin: 0;
+}
+.login-notice,
+.login-feedback {
+  color: #e2d9ef;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.btn-login {
+  margin: 20px 0;
+  letter-spacing: 0.05em;
+}
+.textfield input {
+  font: inherit;
+}
+.left-login-image {
+  width: 100%;
+  max-width: 400px;
+}
+@media (max-width: 600px) {
+  .main-login {
+    padding: 28px 16px;
+    gap: 24px;
+  }
+  .left-login,
+  .right-login {
+    width: 100%;
+  }
+  .left-login-image {
+    width: 190px;
+  }
+  .card-login {
+    padding: 24px;
+  }
+  .left-login > h1 {
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}

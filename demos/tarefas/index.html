@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,follow" />
+    <title>Lista de tarefas | Demonstração</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="../demo.css" />
+    <link rel="stylesheet" href="ajustes.css" />
+    <script src="src/js/script.js" defer></script>
+  </head>
+  <body>
+    <aside class="demo-banner" aria-label="Sobre a demonstração">
+      <a href="../../index.html#projetos">← Voltar ao portfólio</a
+      ><span>Projeto de estudo · versão adaptada para demonstração</span>
+    </aside>
+    <main class="container">
+      <h1>Uma tarefa de cada vez.</h1>
+      <p class="task-intro">
+        Adicione, conclua e remova tarefas. Os dados ficam apenas neste
+        navegador; não são enviados.
+      </p>
+      <form class="task-form">
+        <label for="nova-tarefa">Nova tarefa</label>
+        <div class="task-entry">
+          <input
+            id="nova-tarefa"
+            class="input-task"
+            maxlength="200"
+            required
+            autocomplete="off"
+          /><button class="button-add-task" type="submit">Adicionar</button>
+        </div>
+      </form>
+      <ul class="list-task" aria-label="Suas tarefas"></ul>
+      <p class="task-feedback" role="status" aria-live="polite"></p>
+      <noscript>Ative o JavaScript para experimentar a lista.</noscript>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+body {
+  background: #192f32;
+  font-family: system-ui, sans-serif;
+}
+.container {
+  width: min(580px, calc(100% - 32px));
+  margin: 48px auto;
+  padding: 28px;
+  color: #182b2b;
+  font-family: system-ui, sans-serif;
+}
+.container * {
+  font-family: inherit;
+}
+h1 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+.task-intro {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.task-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+.task-entry {
+  display: flex;
+  gap: 10px;
+}
+.input-task {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  height: 44px;
+}
+.button-add-task {
+  float: none;
+  min-height: 44px;
+}
+.list-task {
+  list-style: none;
+  padding: 0;
+}
+.task {
+  height: auto;
+  min-height: 64px;
+  cursor: default;
+  gap: 12px;
+  padding: 12px;
+}
+.task p {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+.task button {
+  border: 1px solid #64746a;
+  border-radius: 6px;
+  background: #fff;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.task button:hover {
+  background: #d5efdb;
+}
+.task.done {
+  background: #c4e4c2;
+  text-decoration: none;
+}
+.task.done p {
+  text-decoration: line-through;
+}
+.task-feedback {
+  margin-top: 20px;
+  line-height: 1.6;
+  font-size: 0.85rem;
+}
+.empty-state {
+  padding: 24px 0;
+  color: #3e5656;
+}
+@media (max-width: 400px) {
+  .task-entry {
+    flex-wrap: wrap;
+  }
+  .input-task {
+    flex-basis: 100%;
+  }
+  .container {
+    padding: 20px;
+  }
+  .task {
+    gap: 8px;
+  }
+}

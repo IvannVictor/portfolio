@@ -1,0 +1,46 @@
+.demo-banner {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  background: #0b1725;
+  color: #f5f6f4;
+  font:
+    14px/1.5 system-ui,
+    sans-serif;
+  text-align: left;
+}
+.demo-banner a {
+  color: #66e0c4;
+  text-decoration: underline;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.demo-banner span {
+  font-size: 12px;
+  color: #bac7d3;
+}
+body :focus-visible {
+  outline: 3px solid #007b67;
+  outline-offset: 4px;
+}
+.demo-banner a:focus-visible {
+  outline-color: #66e0c4;
+}
+button,
+input {
+  font: inherit;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

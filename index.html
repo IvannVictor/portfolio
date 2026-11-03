@@ -1,218 +1,944 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name='impact-site-verification' value='1b889614-05c2-479f-802b-80b3dcae54c0'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--GOOGLE FONTS-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Bitcount+Grid+Double:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!--Fim do GOOGLE FONTS-->
-    <!--bootstrap icons-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <!--fim bootstrap icons-->
-    <link rel="stylesheet" href="css/style.css">
-    <!--Favicon-->
-    <link rel="icon" type="image/png" href="images/victor_favicon.ico" />
-    <!--fim favicon-->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfólio de Victor Azevedo: desenvolvimento web, projetos de interface e tecnologia aplicada a processos de negócio. Conheça os projetos e entre em contato."
+    />
+    <meta
+      name="impact-site-verification"
+      value="1b889614-05c2-479f-802b-80b3dcae54c0"
+    />
+    <meta name="theme-color" content="#0b1725" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta
+      property="og:title"
+      content="Victor Azevedo | Desenvolvimento web e processos"
+    />
+    <meta
+      property="og:description"
+      content="Da experiência em negócios à construção de soluções digitais. Conheça meu trabalho e meus projetos."
+    />
+    <title>Victor Azevedo | Desenvolvimento web e processos</title>
+    <link rel="icon" href="images/victor_favicon.ico" sizes="32x32" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/menu.js" defer></script>
-    <title>Victor Azevedo | Desenvolvedor Fullstack</title>
-</head>
-<body>
-    <!--Criando nosso cabecalho-->
-    <header>
-        <div class="interface">
-
-            <div class="logo">
-
-                <a href="#">
-                    <img src="images/logo_small_victor.png" alt="logo">
-                </a>
-
-            </div><!--logo--> 
-
-
-            <nav class="menu-desktop">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Especialidades</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Projetos</a></li>
-                </ul>
-            </nav><!--menu-desktop-->
-
-
-            <div class="btn-contato">
-                <a href="#">
-                    <button>Contato</button>
-                </a>
-            </div><!--btn-contato-->
-              
-
-            <div class="btn-abrir-menu" id="btn-menu">
-                <i class="bi bi-list"></i>
-            </div>
-
-
-            <div class="menu-mobile" id="menu-mobile">
-                <div class="btn-fechar">
-                    <i class="bi bi-x-circle"></i>
-                </div><!--btn-fechar-->
-
-                <nav>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Especialidades</a></li>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Projetos</a></li>
-                        <li><a href="#">Contato</a></li>
-                    </ul>
-                </nav>
-            </div><!--Menu-mobile-->
-
-            <div class="overlay-menu" id="overlay-menu">
-
-            </div>
-
-        </div><!--interface-->
+    <script src="js/contact.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#inicio" aria-label="Victor Azevedo, início"
+          ><img
+            src="images/logo_small_victor.png"
+            width="48"
+            height="48"
+            alt=""
+          /><span>victor<span class="accent">.</span>azevedo</span></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navegacao"
+          hidden
+        >
+          Menu
+          <span aria-hidden="true"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" /></svg
+          ></span>
+        </button>
+        <nav id="navegacao" aria-label="Navegação principal">
+          <a href="#projetos">Projetos</a
+          ><a href="#competencias">Competências</a><a href="#sobre">Sobre</a
+          ><a class="nav-contact" href="#contato"
+            >Vamos conversar
+            <span aria-hidden="true"
+              ><svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                aria-hidden="true"
+              >
+                <path d="M6 18 18 6M6 6h12v12" /></svg></span
+          ></a>
+        </nav>
+      </div>
     </header>
-
-
-    <main>
-        <section class="topo-do-site">
-            <div class="interface">
-                <div class="flex">
-                    <div class="txt-topo-site">
-                        <h1>CONSTRUINDO O FUTURO LINHA POR LINHA DE CODIGO<span>.</span></h1>
-                        <P>Criatividade e inovacao andam lado a lado. Com uma combinacao unica de design impactante, funcionalidade e intuitiva e otimizacao para resultados, estou pronto para criar a presenca online dos seus sonhos.</P>
-
-                        <div class="btn-contato">
-                            <a href="#"><button>Entre em Contato</button></a>
-                        </div>
-                    </div><!--txt-topo-site-->
-
-                    <div class="img-topo-site">
-                        <img src="images/victor_small_side_image.png" alt="eu aqui">
-                    </div><!--img-topo-site-->
-                </div><!--flex-->
-            </div><!--interface-->
-        </section><!--section-->
-
-
-        <section class="especialidades">
-            <div class="interface">
-
-                <h2 class="titulo">MINHAS <span>ESPECIALIDADES.</span></h2>
-
-                <div class="flex">
-                    <div class="especialidades-box">
-                        <i class="bi bi-code-square"></i>
-                        <h3>Website</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum deserunt expedita iusto placeat, reiciendis, facere ipsam fugiat, itaque culpa tempora hic perferendis! Sit consequuntur aliquid ab quas vero. Repudiandae, earum.</p>
-                    </div><!--especialidades-box-->
-
-                    <div class="especialidades-box">
-                        <i class="bi bi-cart"></i>
-                        <h3>Loja online</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum deserunt expedita iusto placeat, reiciendis, facere ipsam fugiat, itaque culpa tempora hic perferendis! Sit consequuntur aliquid ab quas vero. Repudiandae, earum.</p>
-                    </div><!--especialidades-box-->
-
-                    <div class="especialidades-box">
-                        <i class="bi bi-wordpress"></i>
-                        <h3>Blog</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum deserunt expedita iusto placeat, reiciendis, facere ipsam fugiat, itaque culpa tempora hic perferendis! Sit consequuntur aliquid ab quas vero. Repudiandae, earum.</p>
-                    </div><!--especialidades-box-->
-                </div><!--flex-->
-            </div><!--interface-->
-        </section><!--especialidades-->
-
-
-        <section class="sobre">
-            <div class="interface">
-                <div class="flex">
-
-                    <div class="img-sobre">
-                        <img src="images/victor_small_side_image.png" alt="eu foto" srcset="">
-                    </div><!--img-sobre-->
-
-                    <div class="txt-sobre">
-                        <h2>MUITO PRAZER, <SPan>SOU VICTOR AZEVEDO.</SPan></h2>
-                        <P>Sou o Victor Azevedo, profissional em transição para a área de tecnologia, com uma trajetória marcada por versatilidade, organização e constante evolução. Atualmente, dedico minha carreira ao desenvolvimento de software, com foco em soluções web, back-end e automação de processos.</P>
-                       
-                        <p>Minha base técnica inclui linguagens como <span>Python, Java, JavaScript, PHP, além de domínio em HTML, CSS e SQL.</span> Tenho familiaridade com ferramentas modernas como <span>Git, GitHub e VSCode,</span> e estou sempre buscando aprimorar meu conhecimento em tecnologias que geram impacto real.</p>
-
-                        <p>Antes da tecnologia, atuei em setores administrativos, fiscais e operacionais, o que me proporcionou uma visão prática de negócios e o fortalecimento de competências como comunicação clara, trabalho em equipe e cumprimento de prazos.</p>
-
-                        <p>Sou movido por desafios e pela vontade constante de aprender. Acredito que o código bem escrito não é apenas funcional — ele transforma realidades.</p>
-
-                        <div class="btn-social">
-                            <a href="https://www.instagram.com/iv_victor" target="_blank"><button><i class="bi bi-instagram"></i></button></a>
-                            <a href="https://www.linkedin.com/in/ivannvictor/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
-                            <a href="https://wa.me/5511975961980" target="_blank"><button><i class="bi bi-whatsapp"></i></i></button></a>
-                        </div>
-                    </div><!--txt-sobre-->
-
-                </div><!--flex-->
-            </div><!--interface-->
-        </section><!--sobre-->
-
-
-        <section class="portfolio">
-            <div class="interface">
-                <h2 class="titulo">MEU <span>PORTFOLIO.</span></h2>
-                <div class="flex">
-                    <div class="img-port" style="background-image: url(images/progeto\ 1\ pokedesk.JPG);">
-                        <div class="overlay">Projeto 1</div>
-                    </div>
-                    <div class="img-port" style="background-image: url(images/projeto\ 2\ tela\ de\ login.jpg);">
-                        <div class="overlay">Projeto 2</div>
-                    </div>
-                </div><!--flex-->
-            </div><!--interface-->
-        </section><!--portfolio-->
-
-
-        <section class="formulario">
-            <div class="interface">
-                <h2 class="titulo">FALA <span>COMIGO.</span></h2>
-
-                <form action="https://formsubmit.co/iivanvictor@outlook.com" method="post">
-                    <input type="text" name="name" id="" placeholder="Seu nome completo:" required>
-                    <input type="text" name="email" id="" placeholder="Seu e-mail:" required>
-                    <input type="text" name="phone" id="" placeholder="Seu celular:">
-                    <textarea name="message" id="" placeholder="Sua mensagem:" required></textarea>
-                    <div class="btn-enviar"><input type="submit" value="ENVIAR"></div>
-                </form>
-            </div><!--interface-->
-        </section><!--formulario-->
-    </main><!--main-->
-    
-    <footer>
-        <div class="interface">
-            <div class="line-footer borda">
-                <div class="flex">
-
-                    <div class="logo-flooter">
-                        <img src="images/logo_small_victor.png" alt="">
-                    </div><!--logo-footer-->
-
-
-                    <div class="btn-social">
-                        <a href="https://www.instagram.com/iv_victor" target="_blank"><button><i class="bi bi-instagram"></i></button></a>
-                        <a href="https://www.linkedin.com/in/ivannvictor/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
-                        <a href="https://wa.me/5511975961980" target="_blank"><button><i class="bi bi-whatsapp"></i></i></button></a>
-                    </div><!--btn-social-->
-
-                </div><!--flex-->
-            </div><!--line-flooter-->
-
-            <div class="line-footer">
-                <p><i class="bi bi-envelope-at-fill"></i> <a href="mailto:ivannvictor@outlook.com">ivannvictor@outlook.com</a></p>
-            </div><!--line-footer-->
-
-        </div><!--interface-->
+    <main id="conteudo" tabindex="-1">
+      <section class="hero container" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="dot" aria-hidden="true"></span> DESENVOLVIMENTO WEB &
+            PROCESSOS
+          </p>
+          <h1 id="hero-title">
+            Ideias claras.<br />Código com<br /><span class="accent"
+              >propósito.</span
+            >
+          </h1>
+          <p class="intro">
+            Sou Victor Azevedo. Conecto minha experiência em negócios ao
+            desenvolvimento de interfaces e soluções digitais.
+          </p>
+          <div class="actions">
+            <a class="button" href="#projetos"
+              >Conheça meu trabalho
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  aria-hidden="true"
+                >
+                  <path d="M12 4v16m-7-7 7 7 7-7" /></svg></span></a
+            ><a class="text-link" href="#contato"
+              >Vamos conversar
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg></span
+            ></a>
+          </div>
+          <p class="hero-note">
+            Tecnologia para simplificar o que faz parte do dia a dia.
+          </p>
+        </div>
+        <div class="portrait">
+          <img
+            src="images/victor-profile.webp"
+            width="640"
+            height="960"
+            fetchpriority="high"
+            alt="Victor Azevedo, desenvolvedor fullstack"
+          />
+          <div class="portrait-caption">
+            <span>OLHAR DE NEGÓCIO.</span
+            ><span>MENTALIDADE DE DESENVOLVEDOR.</span>
+          </div>
+        </div>
+      </section>
+      <div class="principles">
+        <div class="container">
+          <span>Interfaces com clareza</span><span aria-hidden="true">✳</span
+          ><span>Processos com contexto</span><span aria-hidden="true">✳</span
+          ><span>Aprendizado em prática</span>
+        </div>
+      </div>
+      <section
+        class="section container"
+        id="projetos"
+        aria-labelledby="projects-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / TRABALHOS SELECIONADOS</p>
+            <h2 id="projects-title">
+              Do conceito<br />à <span class="accent">construção.</span>
+            </h2>
+          </div>
+          <p>
+            Uma seleção do que venho desenvolvendo: interfaces, estudos e
+            tecnologia aplicada ao trabalho.
+          </p>
+        </div>
+        <div class="projects">
+          <article class="project featured">
+            <div
+              class="zpl-gallery"
+              aria-label="Telas do Gerenciador de Etiquetas ZPL"
+            >
+              <p class="eyebrow">O PROJETO EM TELAS</p>
+              <a
+                class="gallery-link"
+                href="images/zpl/impressao.png"
+                data-title="Central de Impressão"
+                data-caption="Seleção de impressora, pastas de lotes e monitor de processamento."
+                ><img
+                  src="images/zpl/impressao.png"
+                  width="1174"
+                  height="783"
+                  loading="lazy"
+                  alt="Central de Impressão do Gerenciador de Etiquetas ZPL"
+                /><span>Central de Impressão</span
+                ><span class="sr-only"> — ampliar captura</span></a
+              >
+              <p class="gallery-note">
+                Capturas com identificação da empresa ocultada, sem dados
+                operacionais. Selecione uma tela para ampliar.
+              </p>
+              <div class="gallery-thumbnails">
+                <a
+                  class="gallery-link"
+                  href="images/zpl/produtividade.png"
+                  data-title="Produtividade da Expedição"
+                  data-caption="Resumo de atividade com filtros Hoje, Semana e Mês, sem registros no período."
+                  ><img
+                    src="images/zpl/produtividade.png"
+                    width="1171"
+                    height="789"
+                    loading="lazy"
+                    alt="Produtividade da Expedição do Gerenciador de Etiquetas ZPL"
+                  /><span>Produtividade da Expedição</span
+                  ><span class="sr-only"> — ampliar captura</span></a
+                ><a
+                  class="gallery-link"
+                  href="images/zpl/rastreabilidade.png"
+                  data-title="Rastreabilidade de Etiquetas"
+                  data-caption="Consulta por NF, rastreamento, destinatário ou arquivo, com filtros de data."
+                  ><img
+                    src="images/zpl/rastreabilidade.png"
+                    width="1176"
+                    height="792"
+                    loading="lazy"
+                    alt="Rastreabilidade de Etiquetas do Gerenciador de Etiquetas ZPL"
+                  /><span>Rastreabilidade de Etiquetas</span
+                  ><span class="sr-only"> — ampliar captura</span></a
+                ><a
+                  class="gallery-link"
+                  href="images/zpl/reimpressao.png"
+                  data-title="Reimpressão Operacional"
+                  data-caption="Pesquisa de etiquetas arquivadas, seleção de volume e justificativa de reimpressão."
+                  ><img
+                    src="images/zpl/reimpressao.png"
+                    width="1174"
+                    height="781"
+                    loading="lazy"
+                    alt="Reimpressão Operacional do Gerenciador de Etiquetas ZPL"
+                  /><span>Reimpressão Operacional</span
+                  ><span class="sr-only"> — ampliar captura</span></a
+                ><a
+                  class="gallery-link"
+                  href="images/zpl/pendencias.png"
+                  data-title="Pendências de Impressão"
+                  data-caption="Área de análise e reconciliação de pendências, sem pendências abertas na captura."
+                  ><img
+                    src="images/zpl/pendencias.png"
+                    width="1171"
+                    height="786"
+                    loading="lazy"
+                    alt="Pendências de Impressão do Gerenciador de Etiquetas ZPL"
+                  /><span>Pendências de Impressão</span
+                  ><span class="sr-only"> — ampliar captura</span></a
+                ><a
+                  class="gallery-link"
+                  href="images/zpl/indicadores.png"
+                  data-title="Indicadores Operacionais"
+                  data-caption="Resumo de eventos, pendências e reimpressões, com contadores zerados."
+                  ><img
+                    src="images/zpl/indicadores.png"
+                    width="1179"
+                    height="788"
+                    loading="lazy"
+                    alt="Indicadores Operacionais do Gerenciador de Etiquetas ZPL"
+                  /><span>Indicadores Operacionais</span
+                  ><span class="sr-only"> — ampliar captura</span></a
+                ><a
+                  class="gallery-link"
+                  href="images/zpl/auditoria.png"
+                  data-title="Auditoria do Histórico"
+                  data-caption="Consulta de integridade estrutural e referências, exibindo ausência de histórico."
+                  ><img
+                    src="images/zpl/auditoria.png"
+                    width="1170"
+                    height="788"
+                    loading="lazy"
+                    alt="Auditoria do Histórico do Gerenciador de Etiquetas ZPL"
+                  /><span>Auditoria do Histórico</span
+                  ><span class="sr-only"> — ampliar captura</span></a
+                >
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="eyebrow">DESTAQUE / FERRAMENTA PARA EXPEDIÇÃO</p>
+              <h3>Gerenciador de Etiquetas ZPL</h3>
+              <p>
+                Aplicação desktop em Python que centraliza a impressão de
+                etiquetas e o acompanhamento da expedição, com interface em
+                CustomTkinter para Windows.
+              </p>
+              <ul class="project-features">
+                <li>
+                  Processamento em lote de ZPL, TXT e PDF, com conversão de
+                  etiquetas PDF para ZPL.
+                </li>
+                <li>
+                  Etiquetas dos Correios e mini DANFE, com controle de
+                  duplicidade e reimpressão justificada.
+                </li>
+                <li>
+                  Histórico, rastreabilidade, gestão de pendências e auditoria
+                  dos registros.
+                </li>
+                <li>
+                  Gráficos e resumos de produtividade por dia, semana e mês.
+                </li>
+              </ul>
+              <p class="stack">
+                Python · CustomTkinter · ZPL · Windows · Poppler
+              </p>
+              <div class="case-result">
+                <p class="eyebrow">IMPACTO NA ROTINA</p>
+                <p>
+                  <strong
+                    >Tempo de expedição reduzido quase pela metade.</strong
+                  >
+                </p>
+                <p>
+                  Estimativa relatada pelo desenvolvedor a partir da experiência
+                  da operação, sem medição independente. A digitação manual dos
+                  dados das etiquetas foi eliminada do fluxo.
+                </p>
+              </div>
+              <details class="case-details">
+                <summary>Do trabalho manual à impressão em lote</summary>
+                <div>
+                  <p>
+                    <strong>Antes.</strong> A equipe montava etiquetas com dados
+                    das notas fiscais, imprimia documentos em papel, recortava e
+                    fixava as etiquetas nas caixas com fita. A preparação manual
+                    ocupava parte importante da rotina de expedição.
+                  </p>
+                  <p>
+                    <strong>Minha contribuição.</strong> Desenvolvi a solução
+                    individualmente, com apoio de inteligência artificial, a
+                    partir das necessidades reais da empresa. Fiz o levantamento
+                    das necessidades e os testes do programa para a operação.
+                  </p>
+                  <p>
+                    <strong>A solução.</strong> Os arquivos de etiquetas são
+                    gerados a partir dos dados do ERP Omie e processados em
+                    lote. O aplicativo converte PDFs para ZPL, encaminha os
+                    trabalhos à impressora e reúne histórico, pendências,
+                    reimpressão justificada e indicadores em uma interface
+                    desktop.
+                  </p>
+                  <p>
+                    <strong>Decisões técnicas.</strong> Python e CustomTkinter
+                    para a interface, win32print para o spooler do Windows e
+                    pdf2image com Poppler para a conversão de páginas PDF. O
+                    arquivo analisado também utiliza pypdf, Pillow e módulos
+                    auxiliares próprios.
+                  </p>
+                  <p>
+                    <strong>Resultado percebido.</strong> A geração de um
+                    arquivo único com todas as etiquetas simplificou a
+                    impressão. Segundo meu relato da operação, o tempo de
+                    expedição caiu quase pela metade e deixaram de ocorrer erros
+                    de digitação nessa etapa, pois os dados passaram a vir do
+                    ERP.
+                  </p>
+                  <p>
+                    <strong>Uso atual.</strong> Em uso na operação, em um único
+                    computador. A evolução em desenvolvimento é uma base de
+                    dados compartilhada para atender mais usuários e coordenar o
+                    controle de duplicidade; essa capacidade ainda não está
+                    disponível.
+                  </p>
+                  <p>
+                    <strong>Limites.</strong> O sistema processa arquivos
+                    recebidos, sem integração direta documentada com APIs do
+                    Omie ou dos Correios. Registros de envio ao spooler não
+                    comprovam impressão física. A análise estática do arquivo
+                    principal e dos seis módulos auxiliares não substitui os
+                    testes no ambiente Windows.
+                  </p>
+                </div>
+              </details>
+              <p class="project-availability">
+                Projeto empresarial com identidade preservada, sem repositório
+                público.
+              </p>
+              <a class="text-link" href="#contato"
+                >Conversar sobre o projeto
+                <span aria-hidden="true"
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 18 18 6M6 6h12v12" /></svg></span
+              ></a>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-art training" aria-hidden="true">
+              <span>PROCESSO → CONHECIMENTO</span
+              ><strong>Do pedido<br />à expedição.</strong>
+              <div class="flow">
+                <span>01<br />Cotação</span><span>02<br />Etiqueta</span
+                ><span>03<br />Rastreio</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="eyebrow">01 / Aplicação para treinamento</p>
+              <h3>Frete dos Correios no Omie</h3>
+              <p>
+                Uma apresentação interativa que organiza a cotação de frete em
+                etapas, com roteiro, navegação por teclado e orientações para o
+                treinamento.
+              </p>
+              <p class="stack">HTML · CSS · JavaScript</p>
+              <details class="case-details">
+                <summary>O processo em etapas</summary>
+                <div>
+                  <p>
+                    Uma apresentação web para explicar a cotação de frete no
+                    Omie por meio de roteiro, passos visuais e navegação por
+                    teclado.
+                  </p>
+                  <p>
+                    O foco é orientar o uso do ERP; não implementa cálculo de
+                    frete ou postagem via API. A apresentação original contém
+                    identidade empresarial, por isso não foi incorporada como
+                    demonstração pública neste portfólio.
+                  </p>
+                </div>
+              </details>
+              <a
+                class="text-link"
+                href="https://github.com/IvannVictor/treinamentofreteomie"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Explorar o código
+                <span aria-hidden="true"
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                ><span class="sr-only">
+                  de Frete dos Correios no Omie (abre em nova aba)</span
+                ></a
+              >
+            </div>
+          </article>
+          <article class="project">
+            <img
+              class="project-art"
+              src="images/pokedex-preview.webp"
+              width="373"
+              height="472"
+              loading="lazy"
+              alt="Prévia da Pokédex com o cartão do Bulbasaur"
+            />
+            <div class="project-body">
+              <p class="eyebrow">02 / Projeto de estudo</p>
+              <h3>Pokédex</h3>
+              <p>
+                Catálogo de dez Pokémon com cartões e alternância entre temas
+                claro e escuro. Um estudo de composição e interação com
+                JavaScript.
+              </p>
+              <p class="stack">HTML · CSS · JavaScript</p>
+              <details class="case-details">
+                <summary>Componentes e estados visuais</summary>
+                <div>
+                  <p>
+                    Catálogo de dez Pokémon com cartões, imagens locais, tipos e
+                    descrições. O visitante pode alternar entre os temas claro e
+                    escuro.
+                  </p>
+                  <p>
+                    Um estudo de composição responsiva e eventos de interface.
+                    Os dados são estáticos; não há consulta a uma API. A
+                    demonstração local mantém o conteúdo do projeto e ajusta a
+                    marcação e o controle de tema para teclado.
+                  </p>
+                </div>
+              </details>
+              <a class="button demo-link" href="demos/pokedex/index.html"
+                >Ver demonstração<span class="sr-only"> de Pokédex</span
+                ><span aria-hidden="true"> →</span></a
+              >
+              <a
+                class="text-link"
+                href="https://github.com/IvannVictor/pokedex"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Explorar o código
+                <span aria-hidden="true"
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                ><span class="sr-only"> de Pokédex (abre em nova aba)</span></a
+              >
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-art tasks" aria-hidden="true">
+              <span>UM PASSO DE CADA VEZ</span
+              ><strong>Dar espaço<br />às boas ideias.</strong>
+              <div>✓ &nbsp; Organizar o próximo projeto</div>
+              <div>○ &nbsp; Tirar uma ideia do papel</div>
+            </div>
+            <div class="project-body">
+              <p class="eyebrow">03 / Projeto de estudo</p>
+              <h3>Lista de tarefas</h3>
+              <p>
+                Lista de tarefas com inclusão, conclusão, exclusão e
+                persistência local. Experimente a versão adaptada diretamente no
+                portfólio.
+              </p>
+              <p class="stack">HTML · CSS · JavaScript</p>
+              <details class="case-details">
+                <summary>Interação e persistência local</summary>
+                <div>
+                  <p>
+                    Adicionar, concluir, reabrir e excluir tarefas, com
+                    persistência no navegador.
+                  </p>
+                  <p>
+                    Na cópia de demonstração, corrigi a inserção de texto como
+                    HTML, a aceitação de tarefas vazias e os controles
+                    dependentes de mouse. O armazenamento tem chave própria e
+                    tratamento de falha. Os dados permanecem neste navegador;
+                    não há conta nem sincronização.
+                  </p>
+                </div>
+              </details>
+              <a class="button demo-link" href="demos/tarefas/index.html"
+                >Ver demonstração<span class="sr-only">
+                  de Lista de tarefas</span
+                ><span aria-hidden="true"> →</span></a
+              >
+              <a
+                class="text-link"
+                href="https://github.com/IvannVictor/To-Do-List"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Explorar o código
+                <span aria-hidden="true"
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                ><span class="sr-only">
+                  de Lista de tarefas (abre em nova aba)</span
+                ></a
+              >
+            </div>
+          </article>
+          <article class="project">
+            <img
+              class="project-art"
+              src="images/login-preview.webp"
+              width="600"
+              height="760"
+              loading="lazy"
+              alt="Prévia da interface de login com campos de usuário e senha"
+            />
+            <div class="project-body">
+              <p class="eyebrow">04 / Projeto de estudo</p>
+              <h3>Interface de login</h3>
+              <p>
+                Um estudo de formulário e adaptação de layout para diferentes
+                telas. O projeto apresenta a interface visual, sem autenticação
+                de usuários.
+              </p>
+              <p class="stack">HTML · CSS</p>
+              <details class="case-details">
+                <summary>Um estudo de formulário responsivo</summary>
+                <div>
+                  <p>
+                    Interface visual com campos rotulados e adaptação para
+                    diferentes tamanhos de tela.
+                  </p>
+                  <p>
+                    A demonstração corrige o alinhamento do layout, preserva o
+                    foco por teclado e deixa explícito que não autentica
+                    usuários. O botão apenas exibe uma confirmação local;
+                    nenhuma credencial é enviada ou salva.
+                  </p>
+                </div>
+              </details>
+              <a class="button demo-link" href="demos/login/index.html"
+                >Ver demonstração<span class="sr-only">
+                  de Interface de login</span
+                ><span aria-hidden="true"> →</span></a
+              >
+              <a
+                class="text-link"
+                href="https://github.com/IvannVictor/tela-login-responsiva"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Explorar o código
+                <span aria-hidden="true"
+                  ><svg
+                    class="icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                ><span class="sr-only">
+                  de Interface de login (abre em nova aba)</span
+                ></a
+              >
+            </div>
+          </article>
+        </div>
+        <a
+          class="text-link all-projects"
+          href="https://github.com/IvannVictor?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Mais projetos no GitHub
+          <span aria-hidden="true"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path d="M6 18 18 6M6 6h12v12" /></svg></span
+          ><span class="sr-only"> (abre em nova aba)</span></a
+        >
+      </section>
+      <section
+        class="expertise section"
+        id="competencias"
+        aria-labelledby="expertise-title"
+      >
+        <div class="container">
+          <p class="eyebrow">02 / COMPETÊNCIAS</p>
+          <h2 id="expertise-title">
+            Entender o problema.<br /><span class="accent"
+              >Construir a solução.</span
+            >
+          </h2>
+          <div class="expertise-grid">
+            <article>
+              <span class="card-number">01 —</span>
+              <h3>Interfaces web</h3>
+              <p>
+                Estrutura, apresentação e interação. Projetos com HTML, CSS e
+                JavaScript para transformar conteúdo em experiências navegáveis.
+              </p>
+              <p class="stack">HTML · CSS · JavaScript</p>
+            </article>
+            <article>
+              <span class="card-number">02 —</span>
+              <h3>Lógica e desenvolvimento</h3>
+              <p>
+                Estudos em programação e dados como base para ampliar a atuação
+                em aplicações e automação de processos.
+              </p>
+              <p class="stack">Python · Java · PHP · SQL</p>
+            </article>
+            <article>
+              <span class="card-number">03 —</span>
+              <h3>Visão de negócio</h3>
+              <p>
+                Vivência administrativa, fiscal e operacional para compreender
+                rotinas, organizar informações e comunicar soluções.
+              </p>
+              <p class="stack">Processos · Organização · Comunicação</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        class="section container about"
+        id="sobre"
+        aria-labelledby="about-title"
+      >
+        <div>
+          <p class="eyebrow">03 / QUEM ESTÁ POR TRÁS</p>
+          <h2 id="about-title">
+            Prazer,<br />sou o <span class="accent">Victor.</span>
+          </h2>
+        </div>
+        <div class="about-copy">
+          <p class="lead">
+            Minha trajetória começou nos processos. Hoje, também passa pelo
+            código.
+          </p>
+          <p>
+            Antes de me dedicar à tecnologia, atuei em áreas administrativas,
+            fiscais e operacionais. Essa experiência me ensinou a olhar para o
+            contexto, ouvir as pessoas e entender o trabalho antes de propor uma
+            solução.
+          </p>
+          <p>
+            Estou construindo minha trajetória em desenvolvimento de software,
+            com interesse em aplicações web, back-end e automação. Uso meus
+            projetos para colocar o aprendizado em prática e evoluir a cada
+            entrega.
+          </p>
+          <div class="social-links">
+            <a
+              href="https://github.com/IvannVictor"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                aria-hidden="true"
+              >
+                <path d="M6 18 18 6M6 6h12v12" /></svg
+              ><span class="sr-only"> (abre em nova aba)</span></a
+            ><a
+              href="https://www.linkedin.com/in/ivannvictor/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                aria-hidden="true"
+              >
+                <path d="M6 18 18 6M6 6h12v12" /></svg
+              ><span class="sr-only"> (abre em nova aba)</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section
+        class="contact section"
+        id="contato"
+        aria-labelledby="contact-title"
+      >
+        <div class="container contact-grid">
+          <div>
+            <p class="eyebrow">04 / PRÓXIMA CONVERSA</p>
+            <h2 id="contact-title">
+              Uma boa ideia<br />começa com um<br /><span class="accent"
+                >olá.</span
+              >
+            </h2>
+            <p>
+              Tem um projeto, uma oportunidade ou quer trocar experiências?
+              Vamos conversar.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:iivanvictor@outlook.com"
+                >iivanvictor@outlook.com
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg></a
+              ><a
+                href="https://wa.me/5511975961980"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Conversar no WhatsApp
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+                ><span class="sr-only"> (abre em nova aba)</span></a
+              >
+            </div>
+          </div>
+          <form
+            id="contact-form"
+            action="https://formspree.io/f/myeelkay"
+            method="post"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="Contato pelo portfólio de Victor Azevedo"
+            />
+            <div class="field">
+              <label for="nome">Seu nome</label
+              ><input
+                id="nome"
+                name="name"
+                autocomplete="name"
+                maxlength="120"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="email">Seu e-mail</label
+              ><input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                maxlength="254"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="telefone">Celular <span>(opcional)</span></label
+              ><input
+                id="telefone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                maxlength="30"
+              />
+            </div>
+            <div class="field">
+              <label for="mensagem">O que você tem em mente?</label
+              ><textarea
+                id="mensagem"
+                name="message"
+                rows="4"
+                maxlength="5000"
+                required
+              ></textarea>
+            </div>
+            <p class="form-note" id="form-note">
+              Seus dados serão enviados ao Formspree para encaminhar a mensagem
+              por e-mail. E-mail e WhatsApp também estão disponíveis ao lado.
+            </p>
+            <button class="button" type="submit" aria-describedby="form-note">
+              <span class="contact-button-label">Enviar mensagem</span>
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  aria-hidden="true"
+                >
+                  <path d="M6 18 18 6M6 6h12v12" /></svg
+              ></span>
+            </button>
+            <p
+              id="contact-status"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+            <a
+              id="prepared-email"
+              class="text-link"
+              href="mailto:iivanvictor@outlook.com"
+              hidden
+              >Abrir mensagem no aplicativo de e-mail</a
+            >
+            <noscript
+              >Use o link de e-mail ou o WhatsApp ao lado para entrar em
+              contato.</noscript
+            >
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="container footer">
+      <p>
+        Victor Azevedo<span class="accent">.</span><br /><span
+          >Desenvolvimento com propósito.</span
+        >
+      </p>
+      <div class="social-links">
+        <a
+          href="https://www.instagram.com/iv_victor"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Instagram
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"
+          >
+            <path d="M6 18 18 6M6 6h12v12" /></svg
+          ><span class="sr-only"> (abre em nova aba)</span></a
+        ><a href="#inicio"
+          >Voltar ao início
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"
+          >
+            <path d="M12 20V4m-7 7 7-7 7 7" /></svg
+        ></a>
+      </div>
     </footer>
-
-</body>
+    <dialog
+      class="image-viewer"
+      id="image-viewer"
+      aria-labelledby="viewer-title"
+      aria-describedby="viewer-caption"
+    >
+      <div class="viewer-header">
+        <h2 id="viewer-title">Tela do projeto</h2>
+        <button type="button" class="viewer-close" autofocus>
+          Fechar <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="viewer-image"></div>
+      <p id="viewer-caption"></p>
+      <a
+        class="viewer-original"
+        href="images/zpl/impressao.png"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Abrir imagem original em nova aba</a
+      >
+    </dialog>
+  </body>
 </html>

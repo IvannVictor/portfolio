@@ -1,0 +1,44 @@
+body {
+  font-family: system-ui, sans-serif;
+  color: #182530;
+  background: #d9dce0;
+}
+header {
+  align-items: center;
+}
+.demo-heading {
+  font-size: 2rem;
+  margin: 0 0 28px;
+  text-align: center;
+}
+.modo-escuro .cartao-pokemon {
+  color: #19242b;
+}
+.descricao {
+  scrollbar-width: thin;
+}
+.cartao-pokemon {
+  max-width: 100%;
+}
+.tipos {
+  flex-wrap: wrap;
+}
+#botao-alterar-tema {
+  padding: 12px;
+  min-width: 48px;
+  min-height: 48px;
+  cursor: pointer;
+}
+.demo-credit {
+  padding: 24px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+  main .cartao-pokemon:hover {
+    transform: none;
+  }
+}

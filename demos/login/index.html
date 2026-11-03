@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="src/css/style.css" />
+
+    <title>Tela de Login</title>
+    <meta name="robots" content="noindex,follow" />
+    <link rel="stylesheet" href="../demo.css" />
+    <link rel="stylesheet" href="ajustes.css" />
+    <script src="demo.js" defer></script>
+  </head>
+  <body>
+    <aside class="demo-banner" aria-label="Sobre a demonstração">
+      <a href="../../index.html#projetos">← Voltar ao portfólio</a
+      ><span>Projeto de estudo · versão adaptada para demonstração</span>
+    </aside>
+
+    <div class="main-login">
+      <div class="left-login">
+        <h1>Faça login<br />E entre para nosso time</h1>
+        <img
+          src="src/img/tela-login.svg"
+          class="left-login-image"
+          alt="tela-login"
+        />
+      </div>
+
+      <div class="right-login">
+        <form class="card-login">
+          <noscript
+            >Ative o JavaScript para experimentar esta interface. Os campos
+            ficam desabilitados para não transmitir dados.</noscript
+          >
+          <h2>LOGIN</h2>
+          <p class="login-notice">
+            Demonstração visual, sem autenticação. Use dados fictícios; nada é
+            enviado ou salvo.
+          </p>
+
+          <div class="textfield">
+            <label for="usuario">Usuário</label>
+            <input
+              type="text"
+              id="usuario"
+              disabled
+              name="usuario"
+              autocomplete="off"
+              required
+              placeholder="Usuário"
+            />
+          </div>
+
+          <div class="textfield">
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              disabled
+              name="senha"
+              autocomplete="off"
+              required
+              placeholder="Senha"
+            />
+          </div>
+
+          <button class="btn-login" type="submit" disabled>
+            Experimentar interface
+          </button>
+          <p class="login-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
