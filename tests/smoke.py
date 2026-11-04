@@ -66,6 +66,13 @@ def check(axe_path=None):
                         print(f"PASS: {width}px, images, anchors and layout"
                               + (", axe WCAG A/AA" if axe_path else ""))
 
+                    # v3.2: navegação acessível e cartões de estudo íntegros
+                    expect(page.locator(".project-jump a")).to_have_count(2)
+                    expect(page.locator("#projetos-profissionais")).to_have_count(1)
+                    expect(page.locator("#projetos-estudo")).to_have_count(1)
+                    expect(page.locator(".study-card")).to_have_count(3)
+                    expect(page.locator(".study-card .study-capability")).to_have_count(3)
+                    expect(page.locator(".study-card .demo-link")).to_have_count(3)
                     page.set_viewport_size({"width": 390, "height": 844})
                     page.goto(url)
                     toggle = page.get_by_role("button", name="Menu")
