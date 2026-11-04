@@ -237,6 +237,19 @@ def check(axe_path=None):
                     expect(fallback.locator('a[href="#projetos"]').first).to_be_visible()
                     expect(fallback.locator(".gallery-link")).to_have_count(7)
                     assert fallback.locator(".gallery-link").first.get_attribute("href").endswith("impressao.png")
+                    # v3.8: três currículos, acessíveis e disponíveis para impressão
+                    expect(page.locator("#curriculos .resume-card")).to_have_count(3)
+                    for slug in ("operacoes", "tecnologia", "fiscal-contabil"):
+                        link = page.locator(f'#curriculos a[href="curriculos/{slug}.html"]')
+                        expect(link).to_have_count(1)
+                        resume_page = browser.new_page()
+                        response = resume_page.goto(url.rstrip("/") + f"/curriculos/{slug}.html")
+                        assert response.status == 200, slug
+                        expect(resume_page.locator("main h1")).to_have_text("IVAN VICTOR AZEVEDO SILVA")
+                        expect(resume_page.get_by_role("button", name="Imprimir / Salvar como PDF")).to_be_visible()
+                        assert resume_page.locator("main").inner_text().count("EXPERIÊNCIA PROFISSIONAL") == 1
+                        resume_page.close()
+                    print("PASS: three resume pages and print actions")
                     print("PASS: navigation and image links without JavaScript")
                     reduced = browser.new_context(reduced_motion="reduce")
                     reduced_page = reduced.new_page()
