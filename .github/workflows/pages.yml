@@ -1,7 +1,10 @@
 name: Publicar portfólio no GitHub Pages
 
-# A publicação só começa por acionamento manual no GitHub.
+# Publicar automaticamente após atualização aprovada da branch principal.
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:

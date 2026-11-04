@@ -51,7 +51,7 @@ def check(axe_path=None):
                             "document.documentElement.scrollWidth <= innerWidth"
                         ), f"Horizontal overflow at {width}px"
                         expect(page.locator(".hero .button")).to_be_visible()
-                        expect(page.locator(".project")).to_have_count(5)
+                        expect(page.locator(".project")).to_have_count(6)
                         assert page.evaluate("""() => [...document.querySelectorAll('a[href^="#"]')]
                             .every(a => a.hash.length > 1 && document.getElementById(a.hash.slice(1)))""")
                         for image in page.locator("img").all():

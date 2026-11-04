@@ -85,3 +85,12 @@ Após revisar os arquivos:
 6. Configure domínio, URL canônica e imagem de compartilhamento depois de confirmar a URL pública. Não preencha esses campos com um domínio provisório ou não confirmado.
 
 A publicação pode depender de permissões e configurações do GitHub; o workflow foi preparado, mas o deploy real ainda não foi testado.
+
+
+## Evolução profissional v2 (branch de revisão)
+
+A atualização reorganiza o posicionamento para operações, Python e automação, sem remover as demonstrações existentes. Inclui estudo de caso Omie–Correios–SGPWeb, indicadores de impacto com ressalvas sobre a estimativa, três grupos de competências, ajustes visuais responsivos e metadados de compartilhamento para LinkedIn.
+
+A imagem de compartilhamento utiliza provisoriamente a marca existente (`images/logo_small_victor.png`); antes da publicação, recomenda-se substituir por arte horizontal de alta resolução e verificar o cartão no LinkedIn Post Inspector. A URL canônica pressupõe a URL GitHub Pages já informada pelo proprietário.
+
+**Revisão antes do merge:** conferir os textos e as informações empresariais, testar desktop e mobile, executar `python3 tests/smoke.py`, `python3 tests/demos.py` e `python3 tests/contact.py` em ambiente com Chromium/Playwright, conferir o formulário com envio real autorizado e revisar links externos. Não foi feito deploy nesta branch.
