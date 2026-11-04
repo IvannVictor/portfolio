@@ -28,5 +28,7 @@ jobs:
         run: python tests/smoke.py
       - name: Testar demonstrações
         run: python tests/demos.py
+      - name: Testar fluxo interativo ZPL v3.1
+        run: python tests/cases.py
       - name: Testar formulário sem envio real
         run: python tests/contact.py
