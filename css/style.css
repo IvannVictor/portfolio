@@ -1157,3 +1157,164 @@ button:disabled {
     box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 16px 34px rgba(0,0,0,.19);
   }
 }
+
+/* v2.6 — Liquid Glass perceptível na primeira dobra, sem comprometer o retrato */
+.hero { position: relative; isolation: isolate; }
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: 3% -3% 5%;
+  background:
+    radial-gradient(ellipse 35% 42% at 79% 26%, rgba(53, 161, 156, .15), transparent 82%),
+    radial-gradient(ellipse 35% 34% at 17% 86%, rgba(41, 113, 145, .14), transparent 84%);
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+}
+.hero-metrics > div {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(140deg, rgba(63, 139, 145, .22), rgba(19, 43, 62, .90) 62%, rgba(17, 34, 52, .93));
+  border: 1px solid rgba(155, 235, 223, .38);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.20), 0 12px 26px rgba(0,0,0,.14);
+}
+.hero-metrics > div::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(234,255,251,.72), transparent);
+  pointer-events: none;
+}
+.portrait {
+  border: 1px solid rgba(164, 235, 226, .46);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.17), 0 22px 48px rgba(0,0,0,.24), 0 0 32px rgba(102,224,196,.075);
+}
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 1px 0 0 rgba(255,255,255,.10);
+}
+.portrait-caption {
+  background: linear-gradient(135deg, rgba(46, 97, 111, .38), rgba(17,34,52,.86));
+  border-top-color: rgba(173,235,226,.34);
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header {
+    background: rgba(14, 34, 49, .67);
+    border-bottom-color: rgba(174,233,224,.34);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 10px 30px rgba(0,0,0,.13);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    backdrop-filter: blur(20px) saturate(150%);
+  }
+  .hero-metrics > div {
+    background: linear-gradient(145deg, rgba(75,160,162,.23), rgba(26,56,72,.70) 58%, rgba(17,34,52,.80));
+    -webkit-backdrop-filter: blur(15px) saturate(140%);
+    backdrop-filter: blur(15px) saturate(140%);
+  }
+  .portrait-caption {
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+    backdrop-filter: blur(12px) saturate(130%);
+  }
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .hero-metrics > div {
+    transition: transform 260ms cubic-bezier(.22,1,.36,1), border-color 260ms ease, box-shadow 260ms ease;
+  }
+  .hero-metrics > div:hover {
+    transform: translateY(-4px);
+    border-color: rgba(102,224,196,.72);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.27), 0 18px 32px rgba(0,0,0,.21);
+  }
+}
+@media (max-width:760px) {
+  .site-header { position: relative; }
+  .hero::before { inset: 0; }
+}
+
+/* v3.0 — Glass Experience: sistema visual consistente, com fallback sólido */
+:root {
+  --glass-stroke: rgba(174, 236, 225, .33);
+  --glass-highlight: rgba(255,255,255,.16);
+  --glass-surface: linear-gradient(145deg, rgba(70,149,153,.20), rgba(22,51,68,.85) 58%, rgba(14,32,48,.91));
+  --glass-shadow: inset 0 1px 0 var(--glass-highlight), 0 14px 32px rgba(0,0,0,.14);
+}
+html { scroll-padding-top: 108px; }
+body {
+  background-image:
+    radial-gradient(ellipse 42% 23% at 89% 12%, rgba(35,134,127,.10), transparent 90%),
+    radial-gradient(ellipse 40% 22% at 8% 43%, rgba(30,100,140,.08), transparent 90%),
+    radial-gradient(ellipse 42% 24% at 85% 77%, rgba(33,117,114,.08), transparent 90%);
+  background-attachment: scroll;
+}
+.site-header { border-bottom: 1px solid rgba(174,236,225,.3); }
+.header-inner nav .nav-contact, .menu-toggle {
+  border-color: var(--glass-stroke);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+}
+.hero-metrics>div, .project, .expertise-grid article, .career-timeline li, #contact-form, .case-journey>div {
+  border: 1px solid var(--glass-stroke);
+  background: var(--glass-surface);
+  box-shadow: var(--glass-shadow);
+}
+.hero-metrics>div, .project, .expertise-grid article, .career-timeline li, #contact-form, .case-journey>div {
+  border-radius: 16px;
+}
+.expertise-grid { gap: 18px; }
+.expertise-grid article { padding: 26px; min-width: 0; }
+.expertise-grid h3 { margin-top: 20px; }
+.career-timeline { display: grid; gap: 14px; }
+.career-timeline li, .career-timeline li:last-child { border: 1px solid var(--glass-stroke); padding: 26px; }
+#contact-form { padding: 28px; }
+#contact-form input, #contact-form textarea {
+  background: #0b1c2a;
+  border-color: #55727f;
+}
+#contact-form input:focus-visible, #contact-form textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.gallery-link, .image-viewer, .viewer-close, .case-details {
+  border-color: var(--glass-stroke);
+}
+.image-viewer { background: #0b1725; box-shadow: 0 24px 70px rgba(0,0,0,.4); }
+.viewer-header { padding: 10px 12px; border: 1px solid var(--glass-stroke); border-radius: 12px; background: #16313e; }
+.principles { background: rgba(18,42,55,.86); }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .hero-metrics>div, .project, .expertise-grid article, .career-timeline li, #contact-form, .case-journey>div {
+    -webkit-backdrop-filter: blur(12px) saturate(135%);
+    backdrop-filter: blur(12px) saturate(135%);
+  }
+  .viewer-header, .header-inner nav .nav-contact {
+    background: rgba(31,72,83,.58);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+    backdrop-filter: blur(14px) saturate(135%);
+  }
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .expertise-grid article, .career-timeline li, .case-journey>div {
+    transition: border-color 260ms ease, box-shadow 260ms ease;
+  }
+  .expertise-grid article:hover, .career-timeline li:hover, .case-journey>div:hover {
+    border-color: rgba(102,224,196,.66);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.23), 0 18px 36px rgba(0,0,0,.19);
+  }
+}
+@media(max-width:760px) {
+  html { scroll-padding-top: 24px; }
+  .expertise-grid { gap: 14px; }
+  .expertise-grid article, .career-timeline li { padding: 22px; }
+  #contact-form { padding: 20px; }
+  .viewer-header { padding: 8px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .expertise-grid article, .career-timeline li, .case-journey>div { transition: none !important; }
+}
