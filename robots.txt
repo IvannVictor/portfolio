@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /portfolio/
+
+Sitemap: https://ivannvictor.github.io/portfolio/sitemap.xml

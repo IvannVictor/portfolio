@@ -11,6 +11,7 @@ SITE_PREFIX = "https://ivannvictor.github.io/portfolio/"
 REQUIRED = (
     "index.html",
     "sitemap.xml",
+    "robots.txt",
     "curriculos/operacoes.html",
     "curriculos/tecnologia.html",
     "curriculos/fiscal-contabil.html",
@@ -40,6 +41,14 @@ def validate(root: Path) -> list[str]:
         if not (root / relative).is_file():
             errors.append(f"Arquivo obrigatório ausente: {relative}")
 
+    robots = root / "robots.txt"
+    if robots.is_file():
+        content = robots.read_text(encoding="utf-8")
+        if f"Sitemap: {SITE_PREFIX}sitemap.xml" not in content:
+            errors.append("robots.txt não aponta para o sitemap publicado")
+        if "Disallow: /portfolio/" in content:
+            errors.append("robots.txt bloqueia o portfólio")
+
     sitemap = root / "sitemap.xml"
     if sitemap.is_file():
         try:
@@ -49,6 +58,12 @@ def validate(root: Path) -> list[str]:
             )]
             if not locs or len(locs) != len(set(locs)):
                 errors.append("Sitemap vazio ou com URLs duplicadas")
+            required_urls = {
+                f"{SITE_PREFIX}curriculos/{name}.html"
+                for name in ("operacoes", "tecnologia", "fiscal-contabil")
+            }
+            if not required_urls.issubset(set(locs)):
+                errors.append("Currículos obrigatórios ausentes do sitemap")
             for loc in locs:
                 if not loc.startswith(SITE_PREFIX):
                     errors.append(f"URL fora do domínio esperado no sitemap: {loc}")
