@@ -1,0 +1,81 @@
+(() => {
+  "use strict";
+  const stages = [
+    {title:"1. Recebimento do arquivo",description:"O operador disponibiliza um arquivo ZPL, TXT ou PDF para processamento. Para PDF, o aplicativo pode converter a etiqueta em comandos ZPL.",evidence:"Exemplo: etiqueta fictícia dos Correios, sem dados de destinatário."},
+    {title:"2. Identificação e duplicidade",description:"O sistema identifica o tipo da etiqueta e verifica a chave de duplicidade no histórico. Para Correios, a referência é o código de rastreio; para mini DANFE, a combinação de nota fiscal e tipo.",evidence:"Exemplo: rastreio AA123456789BR; o resultado dependeria do histórico existente."},
+    {title:"3. Envio ao spooler",description:"Se o processamento for permitido, o aplicativo encaminha comandos de impressão para a fila do Windows e registra o resultado do envio.",evidence:"O aceite da fila não é confirmação de que a etiqueta saiu fisicamente da impressora."},
+    {title:"4. Histórico e rastreabilidade",description:"O aplicativo registra eventos para consulta, controle de duplicidade e análise de pendências. Ocorrências podem exigir conferência e reconciliação pelo operador.",evidence:"Eventos exibidos nesta demonstração são apenas ilustrativos; não há histórico real."}
+  ];
+  const title = document.getElementById("step-title");
+  const description = document.getElementById("step-description");
+  const evidence = document.getElementById("step-evidence");
+  const previous = document.getElementById("previous");
+  const next = document.getElementById("next");
+  const restart = document.getElementById("restart");
+  const steps = [...document.querySelectorAll("[data-step]")];
+  if (!title || !description || !evidence || !previous || !next || !restart || steps.length !== stages.length) return;
+  const processed = document.getElementById("metric-processed");
+  const currentMetric = document.getElementById("metric-current");
+  const stateMetric = document.getElementById("metric-state");
+  const log = document.getElementById("event-log");
+  const events = [
+    "Simulação iniciada — nenhum arquivo real processado.",
+    "Arquivo fictício identificado; conversão representada didaticamente.",
+    "Regra de duplicidade explicada; histórico real não consultado.",
+    "Envio ao spooler simulado; impressão física não confirmada.",
+    "Evento fictício de rastreabilidade apresentado."
+  ];
+  let current = 0;
+  function render() {
+    const stage = stages[current];
+    if (processed) processed.textContent = String(current);
+    if (currentMetric) currentMetric.textContent = `${current + 1}/${stages.length}`;
+    if (stateMetric) stateMetric.textContent = current === stages.length - 1 ? "Concluído*" : "Didático";
+    if (log) {
+      log.replaceChildren();
+      for (const entry of events.slice(0, current + 1)) {
+        const item = document.createElement("li");
+        item.textContent = entry;
+        log.appendChild(item);
+      }
+    }
+    title.textContent = stage.title;
+    description.textContent = stage.description;
+    evidence.textContent = stage.evidence;
+    previous.disabled = current === 0;
+    next.disabled = current === stages.length - 1;
+    next.textContent = next.disabled ? "Fluxo concluído" : "Próxima etapa";
+    steps.forEach((element, index) => {
+      if (index === current) element.setAttribute("aria-current", "step");
+      else element.removeAttribute("aria-current");
+      element.classList.toggle("complete", index < current);
+    });
+  }
+  previous.addEventListener("click", () => { current = Math.max(0, current - 1); render(); });
+  next.addEventListener("click", () => { current = Math.min(stages.length - 1, current + 1); render(); });
+  restart.addEventListener("click", () => { current = 0; render(); });
+  render();
+  const type = document.getElementById("label-type");
+  const value = document.getElementById("label-value");
+  const valueLabel = document.getElementById("value-label");
+  const check = document.getElementById("check-duplicate");
+  const result = document.getElementById("duplicate-result");
+  if (type && value && valueLabel && check && result) {
+    type.addEventListener("change", () => {
+      valueLabel.textContent = type.value === "correios" ? "Código de rastreio fictício" : "Número de NF fictício";
+      value.value = type.value === "correios" ? "AA123456789BR" : "12345";
+      result.textContent = "Selecione verificar para consultar o histórico fictício.";
+    });
+    check.addEventListener("click", () => {
+      const normalized = value.value.trim().toUpperCase().replace(/\\s+/g, "");
+      if (!normalized) {
+        result.textContent = "Informe uma chave fictícia para verificar.";
+        return;
+      }
+      const duplicate = type.value === "correios" ? normalized === "AA123456789BR" : normalized === "12345";
+      result.textContent = duplicate
+        ? "DUPLICADA (simulação): chave já existente no histórico fictício. O processamento normal seria bloqueado."
+        : "NOVA (simulação): chave ausente do histórico fictício. Isso não confirma autorização real de impressão.";
+    });
+  }
+})();

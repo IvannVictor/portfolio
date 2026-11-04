@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1725">
+<meta name="description" content="Demonstração fictícia do fluxo operacional do Gerenciador de Etiquetas ZPL.">
+<title>Fluxo operacional ZPL | Victor Azevedo</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1725;--panel:#173144;--line:#507e86;--mint:#8ce7ce;--text:#f0f7f8;--muted:#c2d5d9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);background:radial-gradient(circle at 85% 12%,#1b5255 0,transparent 35%),var(--bg)}
+main,header,footer{max-width:1080px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+a{color:var(--mint)}a:focus-visible,button:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+.eyebrow{color:var(--mint);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.12;max-width:800px}h2{font-size:1.5rem}p{max-width:75ch}.muted{color:var(--muted)}
+.panel{background:linear-gradient(135deg,rgba(48,113,120,.36),rgba(18,40,58,.94));border:1px solid rgba(164,235,226,.34);box-shadow:inset 0 1px rgba(255,255,255,.15),0 18px 42px rgba(0,0,0,.2);border-radius:20px;padding:clamp(18px,4vw,32px)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:24px 0}
+.step{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0;color:var(--muted)}
+.step[aria-current="step"]{background:#285a60;color:white;border-color:var(--mint)}
+.step.complete{border-color:#7ec7b4}
+.step strong{display:block;color:var(--text);font-size:.9rem}.step span{font-size:.8rem}
+.detail{min-height:190px;padding:22px;border:1px solid rgba(164,235,226,.2);border-radius:14px;background:rgba(5,20,30,.45)}
+.detail h3{font-size:1.3rem;margin:0 0 8px}.detail p{margin:8px 0}
+.controls{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+button,.button{border-radius:12px;border:1px solid var(--mint);padding:12px 20px;font:inherit;font-weight:650;cursor:pointer;background:var(--mint);color:#0b2530}
+label{display:block;margin:10px 0 5px;font-weight:600}select,input{background:#0b1725;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;width:100%;max-width:440px}
+.result{border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:16px;min-height:54px}
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.case-grid article{background:rgba(5,20,30,.45);border:1px solid var(--line);border-radius:14px;padding:18px}
+@media(max-width:650px){.case-grid{grid-template-columns:1fr}}
+button.secondary{background:transparent;color:var(--text);border-color:var(--line)}button:disabled{opacity:.5;cursor:not-allowed}
+.note{border-left:3px solid var(--mint);padding-left:14px;margin-top:24px}
+.dashboard{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.metric{background:rgba(5,20,30,.5);border:1px solid var(--line);border-radius:12px;padding:16px}
+.metric strong{display:block;color:var(--mint);font-size:1.7rem}
+.metric span{font-size:.85rem;color:var(--muted)}
+.events{list-style:none;margin:0;padding:0}.events li{border-left:2px solid var(--line);padding:8px 0 8px 16px;margin-left:5px}.events li:last-child{border-color:var(--mint)}
+@media(max-width:650px){.dashboard{grid-template-columns:1fr}}
+footer{color:var(--muted);font-size:.9rem}
+@media(max-width:650px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}header,main,footer{padding:18px}.step{padding:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<script src="flow.js" defer></script>
+</head>
+<body>
+<header><strong>victor<span style="color:var(--mint)">.</span>azevedo</strong><a href="../../index.html#projetos">← Voltar aos projetos</a></header>
+<main id="conteudo">
+<p class="eyebrow">v3.1 / Estudo de caso interativo</p>
+<h1>Da entrada do arquivo ao histórico de impressão.</h1>
+<p class="muted">Explore, passo a passo, como funciona o processamento de etiquetas no Gerenciador ZPL. Esta é uma representação didática, não uma execução do aplicativo Windows.</p>
+<section class="panel" aria-labelledby="flow-heading">
+<h2 id="flow-heading">Fluxo operacional ilustrativo</h2>
+<p class="muted">Cenário fictício: etiqueta dos Correios com rastreio AA123456789BR. Nenhum arquivo é enviado ou impresso.</p>
+<ol class="steps" aria-label="Etapas do processamento">
+<li class="step" data-step="0"><strong>01 · Entrada</strong><span>Arquivo recebido</span></li>
+<li class="step" data-step="1"><strong>02 · Validação</strong><span>Identificação e duplicidade</span></li>
+<li class="step" data-step="2"><strong>03 · Envio</strong><span>Spooler do Windows</span></li>
+<li class="step" data-step="3"><strong>04 · Histórico</strong><span>Registro e consulta</span></li>
+</ol>
+<div class="detail" id="step-detail" aria-live="polite" aria-atomic="true">
+<h3 id="step-title">1. Recebimento do arquivo</h3>
+<p id="step-description">O operador disponibiliza um arquivo ZPL, TXT ou PDF para processamento. Para PDF, o aplicativo pode converter a etiqueta em comandos ZPL.</p>
+<p class="muted" id="step-evidence">Exemplo: etiqueta fictícia dos Correios, sem dados de destinatário.</p>
+</div>
+<div class="controls">
+<button type="button" id="previous" class="secondary" disabled>Etapa anterior</button>
+<button type="button" id="next">Próxima etapa</button>
+<button type="button" id="restart" class="secondary">Reiniciar</button>
+</div>
+<section aria-labelledby="dashboard-heading">
+<h3 id="dashboard-heading">Monitor de processamento — simulação</h3>
+<div class="dashboard" aria-label="Indicadores fictícios da demonstração">
+<div class="metric"><strong id="metric-processed">0</strong><span>Etapas concluídas</span></div>
+<div class="metric"><strong id="metric-current">1/4</strong><span>Etapa atual</span></div>
+<div class="metric"><strong id="metric-state">Aguardando</strong><span>Estado ilustrativo</span></div>
+</div>
+<h3>Eventos ilustrativos</h3>
+<ol class="events" id="event-log" aria-live="polite"><li>Simulação iniciada — nenhum arquivo real processado.</li></ol>
+</section>
+<p class="note"><strong>Limite importante:</strong> aceite pelo spooler do Windows não comprova impressão física. Pendências e reconciliações exigem conferência operacional.</p>
+</section>
+<section class="panel" aria-labelledby="duplicate-heading" style="margin-top:24px">
+<h2 id="duplicate-heading">Simulador de duplicidade</h2>
+<p class="muted">Compare dados fictícios com um histórico de exemplo. Nada é salvo ou transmitido.</p>
+<label for="label-type">Tipo de etiqueta</label>
+<select id="label-type"><option value="correios">Correios — rastreio</option><option value="danfe">Mini DANFE — NF + tipo</option></select>
+<label for="label-value" id="value-label">Código de rastreio fictício</label>
+<input id="label-value" value="AA123456789BR" maxlength="40" autocomplete="off">
+<button type="button" id="check-duplicate" style="margin-top:14px">Verificar exemplo</button>
+<div class="result" id="duplicate-result" role="status" aria-live="polite">Selecione verificar para consultar o histórico fictício.</div>
+<p class="muted">Histórico demonstrativo: Correios AA123456789BR e Mini DANFE NF 12345. Outras chaves são tratadas como novas apenas nesta simulação.</p>
+</section>
+<section class="panel" aria-labelledby="audit-heading" style="margin-top:24px">
+<h2 id="audit-heading">Auditoria e reconciliação — cenário ilustrativo</h2>
+<p>O envio ao spooler não garante a impressão física. Se houver dúvida, a operação deve conferir a situação antes de reconciliar o evento.</p>
+<div class="case-grid">
+<article><strong>01 · Pendente</strong><p>Evento original preservado para consulta.</p></article>
+<article><strong>02 · Conferência</strong><p>Operador verifica o resultado físico, fora desta demonstração.</p></article>
+<article><strong>03 · Reconciliação</strong><p>Um novo evento documenta a confirmação, sem apagar o pendente original.</p></article>
+<article><strong>04 · Reimpressão</strong><p>Quando autorizada, exige justificativa e confirmação explícita do operador.</p></article>
+</div>
+<p class="note">Não há reconciliação nem reimpressão real nesta página.</p>
+</section>
+<section aria-labelledby="about-heading">
+<h2 id="about-heading">O que esta demonstração representa?</h2>
+<p>Um fluxo simplificado das funcionalidades documentadas do projeto: entrada de arquivos, classificação e controle de duplicidade, envio à fila de impressão e registro de eventos. As regras de reimpressão, auditoria e reconciliação são apresentadas apenas como exemplos didáticos.</p>
+<p>Os estados apresentados são exemplos didáticos, não dados reais, medições de desempenho ou comprovação de impressão.</p>
+</section>
+</main>
+<footer>Projeto empresarial apresentado com identidade preservada. Demonstração local, sem integrações externas.</footer>
+</body></html>
