@@ -24,6 +24,12 @@ h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.12;max-width:800px}h2{font-siz
 button,.button{border-radius:12px;border:1px solid var(--mint);padding:12px 20px;font:inherit;font-weight:650;cursor:pointer;background:var(--mint);color:#0b2530}
 button.secondary{background:transparent;color:var(--text);border-color:var(--line)}button:disabled{opacity:.5;cursor:not-allowed}
 .note{border-left:3px solid var(--mint);padding-left:14px;margin-top:24px}
+.dashboard{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.metric{background:rgba(5,20,30,.5);border:1px solid var(--line);border-radius:12px;padding:16px}
+.metric strong{display:block;color:var(--mint);font-size:1.7rem}
+.metric span{font-size:.85rem;color:var(--muted)}
+.events{list-style:none;margin:0;padding:0}.events li{border-left:2px solid var(--line);padding:8px 0 8px 16px;margin-left:5px}.events li:last-child{border-color:var(--mint)}
+@media(max-width:650px){.dashboard{grid-template-columns:1fr}}
 footer{color:var(--muted);font-size:.9rem}
 @media(max-width:650px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}header,main,footer{padding:18px}.step{padding:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -55,6 +61,16 @@ footer{color:var(--muted);font-size:.9rem}
 <button type="button" id="next">Próxima etapa</button>
 <button type="button" id="restart" class="secondary">Reiniciar</button>
 </div>
+<section aria-labelledby="dashboard-heading">
+<h3 id="dashboard-heading">Monitor de processamento — simulação</h3>
+<div class="dashboard" aria-label="Indicadores fictícios da demonstração">
+<div class="metric"><strong id="metric-processed">0</strong><span>Etapas concluídas</span></div>
+<div class="metric"><strong id="metric-current">1/4</strong><span>Etapa atual</span></div>
+<div class="metric"><strong id="metric-state">Aguardando</strong><span>Estado ilustrativo</span></div>
+</div>
+<h3>Eventos ilustrativos</h3>
+<ol class="events" id="event-log" aria-live="polite"><li>Simulação iniciada — nenhum arquivo real processado.</li></ol>
+</section>
 <p class="note"><strong>Limite importante:</strong> aceite pelo spooler do Windows não comprova impressão física. Pendências e reconciliações exigem conferência operacional.</p>
 </section>
 <section aria-labelledby="about-heading">
