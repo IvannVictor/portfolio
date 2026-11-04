@@ -126,7 +126,7 @@ def check(axe_path=None):
                     expect(page.locator('img[loading="lazy"]:not([decoding="async"])')).to_have_count(0)
                     # v3.5: arquitetura acessível e conteúdo operacional verificável
                     expect(page.get_by_role("heading", name="Arquitetura e controles operacionais")).to_have_count(1)
-                    expect(page.locator(".case-pipeline li")).to_have_count(4)
+                    expect(page.locator(".case-pipeline li")).to_have_count(8)
                     expect(page.locator(".case-pipeline li strong")).to_have_text(
                         ["Entrada", "Tratamento", "Validação", "Saída e consulta"]
                     )
