@@ -68,6 +68,16 @@ def check(axe_path=None):
                         print(f"PASS: {width}px, images, anchors and layout"
                               + (", axe WCAG A/AA" if axe_path else ""))
 
+                    # v3.7: prioridades de rede não competem com a imagem principal
+                    expect(page.locator('img[loading="lazy"][fetchpriority="low"]')).to_have_count(9)
+                    expect(page.locator('img[loading="lazy"]:not([fetchpriority="low"])')).to_have_count(0)
+                    expect(page.locator('img[src="images/victor-profile.webp"]')).to_have_attribute(
+                        "fetchpriority", "high"
+                    )
+                    expect(page.locator('img[src="images/victor-profile.webp"]')).to_have_attribute(
+                        "loading", "eager"
+                    )
+                    assert page.locator('link[rel="stylesheet"]').get_attribute("href").endswith("v=3.7.0")
                     # v3.6: JSON-LD válido, sitemap sem links inexistentes
                     structured = json.loads(page.locator('script[type="application/ld+json"]').text_content())
                     assert structured["@context"] == "https://schema.org"
