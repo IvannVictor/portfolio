@@ -1127,3 +1127,33 @@ button:disabled {
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* v2.5 — vidro discreto, preservando contraste e animações de entrada */
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header {
+    background: rgba(11, 23, 37, .82);
+    border-bottom-color: rgba(174, 233, 224, .19);
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+    backdrop-filter: blur(14px) saturate(125%);
+  }
+  .project {
+    background: linear-gradient(145deg, rgba(43, 79, 88, .27), rgba(17, 34, 52, .92) 54%);
+    border-color: rgba(174, 233, 224, .21);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 10px 28px rgba(0,0,0,.10);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+  }
+  .header-inner nav .nav-contact {
+    background: rgba(102,224,196,.06);
+    border-color: rgba(174,233,224,.27);
+  }
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .project {
+    transition: border-color 240ms ease, box-shadow 240ms ease, background-color 240ms ease;
+  }
+  .project:hover {
+    border-color: rgba(102,224,196,.53);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 16px 34px rgba(0,0,0,.19);
+  }
+}
