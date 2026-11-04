@@ -1052,3 +1052,11 @@ button:disabled {
 .process-art .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .process-art .flow span{display:block;padding:10px 12px;border:1px solid #547d7d;border-radius:8px;color:var(--ink);font-size:.8rem}
 @media(max-width:760px){.hero-metrics{grid-template-columns:1fr}.process-art{min-height:250px;height:auto}.study-divider{padding-top:24px}}
+
+/* v2.2 — cartão Omie no mesmo sistema visual do treinamento */
+.project-art.training.process-art{background:#d9e7d8;color:#153c32;height:310px;min-height:310px;padding:30px;gap:20px;align-items:stretch;justify-content:center}
+.project-art.training.process-art>span{color:#153c32;font-size:.62rem;letter-spacing:.14em;font-weight:750}
+.project-art.training.process-art>strong{color:#153c32;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:-.04em;line-height:1.05}
+.project-art.training.process-art .flow{display:flex;gap:14px;align-items:stretch;flex-wrap:nowrap;width:100%}
+.project-art.training.process-art .flow>span{flex:1;min-width:0;border:0;border-top:1px solid #7b9c8c;border-radius:0;padding:10px 0 0;background:transparent;color:#153c32;font-size:.72rem;line-height:1.55}
+@media(max-width:760px){.project-art.training.process-art{height:310px;min-height:310px;padding:24px}.project-art.training.process-art .flow{gap:10px}}
