@@ -14,9 +14,31 @@
   const restart = document.getElementById("restart");
   const steps = [...document.querySelectorAll("[data-step]")];
   if (!title || !description || !evidence || !previous || !next || !restart || steps.length !== stages.length) return;
+  const processed = document.getElementById("metric-processed");
+  const currentMetric = document.getElementById("metric-current");
+  const stateMetric = document.getElementById("metric-state");
+  const log = document.getElementById("event-log");
+  const events = [
+    "Simulação iniciada — nenhum arquivo real processado.",
+    "Arquivo fictício identificado; conversão representada didaticamente.",
+    "Regra de duplicidade explicada; histórico real não consultado.",
+    "Envio ao spooler simulado; impressão física não confirmada.",
+    "Evento fictício de rastreabilidade apresentado."
+  ];
   let current = 0;
   function render() {
     const stage = stages[current];
+    if (processed) processed.textContent = String(current);
+    if (currentMetric) currentMetric.textContent = `${current + 1}/${stages.length}`;
+    if (stateMetric) stateMetric.textContent = current === stages.length - 1 ? "Concluído*" : "Didático";
+    if (log) {
+      log.replaceChildren();
+      for (const entry of events.slice(0, current + 2)) {
+        const item = document.createElement("li");
+        item.textContent = entry;
+        log.appendChild(item);
+      }
+    }
     title.textContent = stage.title;
     description.textContent = stage.description;
     evidence.textContent = stage.evidence;
