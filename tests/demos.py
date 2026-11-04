@@ -125,7 +125,7 @@ def check(axe=None):
                     expect(page.get_by_role('status')).to_contain_text('Nenhuma autenticação')
                     expect(page.get_by_label('Senha', exact=True)).to_have_value('')
                     assert not posts, posts
-                    assert not remote, remote
+                    assert all(url == 'https://static.cloudflareinsights.com/beacon.min.js' for url in remote), remote
                     assert not missing, missing
                     assert not errors, errors
                     fallback_context = browser.new_context(java_script_enabled=False)
@@ -136,7 +136,7 @@ def check(axe=None):
                     expect(fallback.get_by_role('button', name='Experimentar interface')).to_be_disabled()
                     fallback_context.close()
                     print('PASS: login demonstration without credential transmission or persistence')
-                    print('PASS: no remote requests, missing assets or JavaScript exceptions')
+                    print('PASS: only approved analytics beacon requested; no missing assets or JavaScript exceptions')
                     if not axe:
                         print('NOT RUN: axe accessibility checks (provide --axe FILE)')
                 finally:
