@@ -86,6 +86,15 @@ def check(axe_path=None):
                         "href", "images/victor-profile.webp"
                     )
                     expect(page.locator('img[loading="lazy"]:not([decoding="async"])')).to_have_count(0)
+                    # v3.5: arquitetura acessível e conteúdo operacional verificável
+                    expect(page.get_by_role("heading", name="Arquitetura e controles operacionais")).to_have_count(1)
+                    expect(page.locator(".case-pipeline li")).to_have_count(4)
+                    expect(page.locator(".case-pipeline")).to_have_css("grid-template-columns",
+                        page.locator(".case-pipeline").evaluate(
+                            "el => getComputedStyle(el).gridTemplateColumns"
+                        ))
+                    assert "não equivale à confirmação física" in page.locator(".case-caveat").inner_text()
+                    assert "não elimina a conferência" in page.locator(".process-case").inner_text()
                     # v3.2: navegação acessível e cartões de estudo íntegros
                     expect(page.locator(".project-jump a")).to_have_count(2)
                     assert page.locator(".project-jump a").evaluate_all("(links) => links.every(link => document.querySelector(link.getAttribute(\'href\')))")
