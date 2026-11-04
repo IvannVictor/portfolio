@@ -1416,3 +1416,14 @@ body {
 .case-pipeline span, .case-caveat { color: var(--muted); font-size: .83rem; line-height: 1.6; }
 .case-caveat { margin: 16px 0 0; }
 @media (max-width: 640px) { .case-evidence { padding: 16px; } .case-pipeline { grid-template-columns: 1fr; } }
+
+/* v3.7 — Evita deslocamento do cabeçalho: o menu com JS começa fechado
+   antes da execução dos scripts defer. Sem JS, os links permanecem visíveis. */
+@media (max-width: 760px) {
+  .js-enabled .header-inner nav {
+    display: none;
+  }
+  .js-enabled .header-inner nav[data-menu-open]:not([hidden]) {
+    display: flex;
+  }
+}
