@@ -1060,3 +1060,23 @@ button:disabled {
 .project-art.training.process-art .flow{display:flex;gap:14px;align-items:stretch;flex-wrap:nowrap;width:100%}
 .project-art.training.process-art .flow>span{flex:1;min-width:0;border:0;border-top:1px solid #7b9c8c;border-radius:0;padding:10px 0 0;background:transparent;color:#153c32;font-size:.72rem;line-height:1.55}
 @media(max-width:760px){.project-art.training.process-art{height:310px;min-height:310px;padding:24px}.project-art.training.process-art .flow{gap:10px}}
+
+/* v2.3 — narrativa do case e trajetória profissional */
+.case-journey{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0 18px}
+.case-journey>div{min-width:0;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--bg)}
+.case-step{display:block;color:var(--accent);font-size:.62rem;font-weight:750;letter-spacing:.12em;margin-bottom:12px}
+.case-journey h4{font-size:.96rem;line-height:1.25;margin:0 0 10px;color:var(--ink)}
+.case-journey p{font-size:.78rem;line-height:1.6}
+.case-caption{font-size:.78rem;margin:18px 0 0;color:var(--muted)}
+.career{background:var(--bg);border-top:1px solid var(--line)}
+.career-heading{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:end;margin-bottom:46px}
+.career-heading h2{margin-top:18px;max-width:18ch}
+.career-heading>p{max-width:50ch}
+.career-timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.career-timeline li{display:grid;grid-template-columns:200px 1fr;gap:32px;border-top:1px solid var(--line);padding:28px 0}
+.career-timeline li:last-child{border-bottom:1px solid var(--line)}
+.career-period{font-size:.68rem;letter-spacing:.13em;color:var(--accent);font-weight:750;padding-top:8px}
+.career-timeline h3{font-size:1.35rem;margin:0 0 12px}
+.career-timeline p{max-width:75ch;font-size:.92rem}
+.career-timeline .career-tags{font-size:.75rem;color:var(--accent);margin-top:14px}
+@media(max-width:800px){.case-journey{grid-template-columns:1fr}.career-heading{grid-template-columns:1fr;gap:18px}.career-timeline li{grid-template-columns:1fr;gap:12px}.career-period{padding-top:0}}
