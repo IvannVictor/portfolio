@@ -74,6 +74,11 @@ def check(axe_path=None):
                     expect(page.locator('meta[property="og:image"]')).to_have_count(1)
                     expect(page.locator('meta[name="twitter:image"]')).to_have_count(1)
                     expect(page.locator('html')).to_have_attribute("lang", "pt-BR")
+                    expect(page.locator('meta[name="twitter:title"]')).to_have_count(1)
+                    expect(page.locator('meta[name="twitter:description"]')).to_have_count(1)
+                    expect(page.locator('meta[property="og:url"]')).to_have_attribute(
+                        "content", "https://ivannvictor.github.io/portfolio/"
+                    )
                     expect(page.locator('meta[name="twitter:card"]')).to_have_attribute(
                         "content", "summary"
                     )
