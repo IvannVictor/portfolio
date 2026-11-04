@@ -1403,3 +1403,16 @@ body {
   .study-card { transition: none; }
   .study-card:hover { transform: none; }
 }
+
+
+/* v3.5 — arquitetura dos estudos de caso, sem efeitos ou dependências extras */
+.case-evidence { margin: 24px 0; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.case-evidence h4 { margin: 0 0 16px; color: var(--ink); font-size: 1rem; }
+.case-pipeline { list-style: none; counter-reset: case-stage; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; }
+.case-pipeline li { counter-increment: case-stage; min-width: 0; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(102,224,196,.045); }
+.case-pipeline li::before { content: counter(case-stage, decimal-leading-zero); display: block; margin-bottom: 8px; color: var(--accent); font-weight: 700; font-size: .75rem; }
+.case-pipeline strong, .case-pipeline span { display: block; }
+.case-pipeline strong { color: var(--ink); margin-bottom: 6px; }
+.case-pipeline span, .case-caveat { color: var(--muted); font-size: .83rem; line-height: 1.6; }
+.case-caveat { margin: 16px 0 0; }
+@media (max-width: 640px) { .case-evidence { padding: 16px; } .case-pipeline { grid-template-columns: 1fr; } }
