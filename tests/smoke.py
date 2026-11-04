@@ -126,16 +126,16 @@ def check(axe_path=None):
                     expect(page.locator('img[loading="lazy"]:not([decoding="async"])')).to_have_count(0)
                     # v3.5: arquitetura acessível e conteúdo operacional verificável
                     expect(page.get_by_role("heading", name="Arquitetura e controles operacionais")).to_have_count(1)
-                    expect(page.locator("#zpl-architecture-title + .case-pipeline li")).to_have_count(4)
-                    expect(page.locator("#zpl-architecture-title + .case-pipeline li strong")).to_have_text(
+                    expect(page.locator("#zpl-architecture-title ~ .case-pipeline li")).to_have_count(4)
+                    expect(page.locator("#zpl-architecture-title ~ .case-pipeline li strong")).to_have_text(
                         ["Entrada", "Tratamento", "Validação", "Saída e consulta"]
                     )
                     page.set_viewport_size({"width": 390, "height": 844})
-                    assert page.locator("#zpl-architecture-title + .case-pipeline").evaluate(
+                    assert page.locator("#zpl-architecture-title ~ .case-pipeline").evaluate(
                         "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
                     ) == 1
                     page.set_viewport_size({"width": 1440, "height": 900})
-                    assert page.locator("#zpl-architecture-title + .case-pipeline").evaluate(
+                    assert page.locator("#zpl-architecture-title ~ .case-pipeline").evaluate(
                         "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
                     ) == 2
                     assert "não equivale à confirmação física" in page.locator("#zpl-architecture-title").locator("..").locator(".case-caveat").inner_text()
@@ -242,7 +242,7 @@ def check(axe_path=None):
                     expect(page.locator("#omie-architecture-title")).to_have_count(1)
                     expect(page.locator(".case-lead")).to_have_count(2)
                     expect(page.locator(".case-verification")).to_have_count(1)
-                    expect(page.locator("#omie-architecture-title + .case-pipeline li")).to_have_count(4)
+                    expect(page.locator("#omie-architecture-title ~ .case-pipeline li")).to_have_count(4)
                     expect(page.locator(".case-verification li")).to_have_count(3)
                     print("PASS: case studies, evidence and Omie operational flow")
                     # v3.9: conversão para recrutadores e navegação acessível
