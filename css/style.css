@@ -1108,3 +1108,22 @@ button:disabled {
   .image-viewer{width:calc(100% - 16px);max-height:calc(100dvh - 16px);padding:12px}
 }
 @media(hover:none){.gallery-link,.viewer-close,.menu-toggle{min-height:44px}}
+
+/* v2.5 — entradas discretas ativadas somente quando JS e IntersectionObserver estão disponíveis */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  .reveal-ready [data-reveal] {
+    transition: opacity 680ms cubic-bezier(.22,1,.36,1), transform 680ms cubic-bezier(.22,1,.36,1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
