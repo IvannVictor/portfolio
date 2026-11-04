@@ -4,7 +4,7 @@
 Medir o interesse no portfólio e nos currículos, sem coletar dados de formulários ou identificar individualmente visitantes.
 
 ## Situação
-Nenhum serviço de analytics foi habilitado nesta etapa. Não há código de rastreamento nem envio de eventos. O serviço de contato Formspree é independente de analytics e já está configurado no site.
+O beacon oficial do Cloudflare Web Analytics foi incluído na branch de desenvolvimento, usando o token do site fornecido pelo proprietário. **Ainda não foi publicado na `main`**. O navegador carregará o beacon apenas quando a versão for publicada; os testes automatizados bloqueiam requisições externas. Não há eventos personalizados nem leitura de campos de formulário. O serviço de contato Formspree é independente de analytics e já está configurado no site.
 
 ## Métricas propostas
 - Visualizações da página inicial e das páginas de currículo (Operações, Tecnologia, Fiscal-Contábil).
@@ -29,8 +29,8 @@ Não registrar nome, e-mail, telefone, mensagem, conteúdo de formulário, ender
 6. Controle de acesso à conta e capacidade de excluir dados.
 
 ## Implementação planejada após escolha do provedor
-1. Criar configuração isolada e desabilitada por padrão na branch de desenvolvimento.
-2. Instrumentar somente links públicos com atributos estáticos, sem ler campos de formulário.
+1. Preparar o beacon oficial na branch isolada, sem publicar antes da aprovação.
+2. Medir inicialmente apenas páginas com o beacon oficial; não instrumentar cliques individuais sem suporte confirmado do provedor.
 3. Testar ausência de requisições quando analytics estiver desabilitado.
 4. Testar os eventos permitidos e bloquear propriedades extras.
 5. Validar Lighthouse, Playwright, acessibilidade e impacto na carga.
