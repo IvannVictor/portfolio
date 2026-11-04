@@ -1438,3 +1438,50 @@ body {
 @media(max-width:900px){.resume-grid{grid-template-columns:1fr}.resume-card{padding:24px}}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.resume-card{transition:border-color .25s ease,transform .25s ease}.resume-card:hover{border-color:var(--accent);transform:translateY(-3px)}}
 @media(prefers-reduced-motion:reduce){.resume-card{transition:none}}
+
+/* v3.9 — recrutadores: ações claras, contraste e navegação responsiva. */
+.hero .actions { gap: 14px 18px; }
+.hero .button-secondary {
+  background: rgba(14, 34, 49, .78);
+  border-color: rgba(140, 229, 202, .72);
+  color: var(--ink);
+}
+.hero .button-secondary:hover,
+.hero .button-secondary:focus-visible {
+  background: rgba(102, 224, 196, .15);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+.hero-shortcut { margin-top: 16px; font-size: .85rem; }
+.hero-shortcut a,
+.resume-contact a { color: var(--accent); font-weight: 650; }
+.hero-shortcut a:hover,
+.resume-contact a:hover { text-decoration-thickness: 2px; }
+.resume-guidance {
+  max-width: 68ch;
+  margin: -16px 0 28px;
+  color: var(--muted);
+  font-size: .95rem;
+}
+.resume-card { height: 100%; }
+.resume-card .button { margin-top: auto; }
+.resume-contact {
+  margin-top: 28px;
+  max-width: 74ch;
+  font-size: .9rem;
+}
+#curriculos { scroll-margin-top: 112px; }
+@media (max-width: 1000px) {
+  .header-inner nav { gap: 12px; }
+  .header-inner nav a { font-size: .8rem; }
+}
+@media (max-width: 760px) {
+  #curriculos { scroll-margin-top: 24px; }
+  .hero .actions { align-items: stretch; }
+  .hero .actions .button { flex: 1 1 180px; text-align: center; }
+  .hero .actions .text-link { flex-basis: 100%; }
+  .resume-guidance { margin-top: 0; }
+}
+@media (max-width: 420px) {
+  .hero .actions .button { flex-basis: 100%; }
+}
