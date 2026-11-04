@@ -69,7 +69,7 @@ def check(axe_path=None):
                     page.set_viewport_size({"width": 390, "height": 844})
                     page.goto(url)
                     toggle = page.get_by_role("button", name="Menu")
-                    navigation = page.get_by_role("navigation")
+                    navigation = page.get_by_role("navigation", name="Navegação principal")
                     expect(navigation).to_be_hidden()
                     toggle.focus()
                     page.keyboard.press("Enter")
