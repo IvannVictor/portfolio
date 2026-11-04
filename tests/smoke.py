@@ -85,7 +85,7 @@ def check(axe_path=None):
                     expect(page.locator('img[src="images/victor-profile.webp"]')).to_have_attribute(
                         "loading", "eager"
                     )
-                    assert page.locator('link[rel="stylesheet"]').get_attribute("href").endswith("v=3.7.0")
+                    assert page.locator('link[rel="stylesheet"]').get_attribute("href").endswith("v=3.8.0")
                     # v3.6: JSON-LD válido, sitemap sem links inexistentes
                     structured = json.loads(page.locator('script[type="application/ld+json"]').text_content())
                     assert structured["@context"] == "https://schema.org"
