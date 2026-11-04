@@ -116,6 +116,8 @@ def check(axe_path=None):
                         "href", "https://ivannvictor.github.io/portfolio/"
                     )
                     expect(page.locator('meta[name="description"]')).to_have_count(1)
+                    expect(page.locator('link[rel="icon"][type="image/svg+xml"]')).to_have_attribute("href", "images/ivan-victor-monograma.svg")
+                    expect(page.locator('header img[src="images/ivan-victor-monograma.svg"]')).to_have_count(1)
                     expect(page.locator('meta[property="og:image"]')).to_have_count(1)
                     expect(page.locator('meta[name="twitter:image"]')).to_have_count(1)
                     expect(page.locator('html')).to_have_attribute("lang", "pt-BR")
