@@ -5,7 +5,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "_site"
-FILES = ("index.html", "sitemap.xml")
+FILES = ("index.html", "sitemap.xml", "robots.txt")
 DIRS = ("css", "js", "images", "demos", "curriculos")
 
 
