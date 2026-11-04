@@ -1318,3 +1318,36 @@ body {
 @media(prefers-reduced-motion:reduce) {
   .expertise-grid article, .career-timeline li, .case-journey>div { transition: none !important; }
 }
+
+/* v3.2 — atalhos sem JavaScript para categorias de projetos */
+.project-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 28px;
+}
+.project-jump a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(102, 224, 196, .4);
+  border-radius: 999px;
+  background: rgba(17, 34, 52, .82);
+  color: var(--ink);
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.project-jump a:hover,
+.project-jump a:focus-visible {
+  background: rgba(102, 224, 196, .12);
+  border-color: var(--accent);
+}
+#projetos-profissionais, #projetos-estudo { scroll-margin-top: 24px; }
+@media (max-width: 420px) {
+  .project-jump { flex-direction: column; }
+  .project-jump a { width: 100%; }
+}
