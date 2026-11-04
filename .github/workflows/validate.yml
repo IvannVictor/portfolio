@@ -21,7 +21,9 @@ jobs:
         run: |
           python -m pip install playwright
           python -m playwright install --with-deps chromium
-          echo "CHROMIUM_PATH=$HOME/.cache/ms-playwright/$(ls "$HOME/.cache/ms-playwright" | grep '^chromium-' | head -n1)/chrome-linux64/chrome" >> "$GITHUB_ENV"
+          CHROME=$(find "$HOME/.cache/ms-playwright" -type f \( -name chrome -o -name chromium \) | head -n 1)
+          test -x "$CHROME"
+          echo "CHROMIUM_PATH=$CHROME" >> "$GITHUB_ENV"
       - name: Executar smoke tests
         run: python tests/smoke.py
       - name: Testar demonstrações
