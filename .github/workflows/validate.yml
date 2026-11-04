@@ -1,0 +1,30 @@
+name: Validar portfólio
+on:
+  push:
+    branches:
+      - feature/portfolio-profissional-v2
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar Chromium e Playwright
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          echo "CHROMIUM_PATH=$HOME/.cache/ms-playwright/$(ls "$HOME/.cache/ms-playwright" | grep '^chromium-' | head -n1)/chrome-linux64/chrome" >> "$GITHUB_ENV"
+      - name: Executar smoke tests
+        run: python tests/smoke.py
+      - name: Testar demonstrações
+        run: python tests/demos.py
+      - name: Testar formulário sem envio real
+        run: python tests/contact.py
