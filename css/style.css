@@ -1371,3 +1371,35 @@ body {
 @media (max-width: 640px) {
   .case-highlights { grid-template-columns: 1fr; }
 }
+
+/* v3.2 — cartões de estudo: hierarquia, foco e superfícies responsivas */
+.study-card {
+  position: relative;
+  border-color: rgba(102, 224, 196, .22);
+  background: linear-gradient(155deg, rgba(102, 224, 196, .045), transparent 60%), var(--surface);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.study-card:hover, .study-card:focus-within {
+  border-color: rgba(102, 224, 196, .58);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, .14);
+}
+.study-card:hover { transform: translateY(-3px); }
+.study-card .project-art { object-position: center top; }
+.study-card .project-body h3 { margin-bottom: 10px; }
+.study-card .study-capability {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0 0 16px;
+  padding: 6px 10px;
+  border: 1px solid rgba(102, 224, 196, .3);
+  border-radius: 8px;
+  background: rgba(102, 224, 196, .075);
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .study-card { transition: none; }
+  .study-card:hover { transform: none; }
+}
