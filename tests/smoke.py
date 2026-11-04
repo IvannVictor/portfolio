@@ -237,6 +237,14 @@ def check(axe_path=None):
                     expect(fallback.locator('a[href="#projetos"]').first).to_be_visible()
                     expect(fallback.locator(".gallery-link")).to_have_count(7)
                     assert fallback.locator(".gallery-link").first.get_attribute("href").endswith("impressao.png")
+                    # v3.9 etapa 3: estudos de caso verificáveis e acessíveis
+                    expect(page.locator("#zpl-architecture-title")).to_have_count(1)
+                    expect(page.locator("#omie-architecture-title")).to_have_count(1)
+                    expect(page.locator(".case-lead")).to_have_count(2)
+                    expect(page.locator(".case-verification")).to_have_count(1)
+                    expect(page.locator("#omie-architecture-title + .case-pipeline li")).to_have_count(4)
+                    expect(page.locator(".case-verification li")).to_have_count(3)
+                    print("PASS: case studies, evidence and Omie operational flow")
                     # v3.9: conversão para recrutadores e navegação acessível
                     expect(page.locator('#navegacao a[href="#curriculos"]')).to_have_count(1)
                     expect(page.locator('.hero .button-secondary[href="#curriculos"]')).to_have_count(1)
