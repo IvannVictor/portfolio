@@ -74,6 +74,8 @@ def check(axe_path=None):
                     assert structured["@type"] == "Person"
                     assert structured["url"] == "https://ivannvictor.github.io/portfolio/"
                     assert len(structured["sameAs"]) == 2
+                    assert structured["image"].endswith("/images/victor-profile.webp")
+                    assert (ROOT / "images/victor-profile.webp").is_file()
                     sitemap = ET.parse(ROOT / "sitemap.xml")
                     locs = [node.text for node in sitemap.findall(
                         ".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc"
