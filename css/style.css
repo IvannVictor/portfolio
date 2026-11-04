@@ -1351,3 +1351,23 @@ body {
   .project-jump { flex-direction: column; }
   .project-jump a { width: 100%; }
 }
+
+/* v3.2 — síntese de estudos de caso, sem métricas inventadas */
+.case-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+.case-highlights > div {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgba(102,224,196,.2);
+  border-radius: 12px;
+  background: rgba(102,224,196,.055);
+}
+.case-highlights strong { display: block; color: var(--accent); font-size: .95rem; }
+.case-highlights span { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+@media (max-width: 640px) {
+  .case-highlights { grid-template-columns: 1fr; }
+}
