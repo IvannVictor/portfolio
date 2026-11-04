@@ -66,10 +66,18 @@ def check(axe_path=None):
                         print(f"PASS: {width}px, images, anchors and layout"
                               + (", axe WCAG A/AA" if axe_path else ""))
 
+                    # v3.2: navegação acessível e cartões de estudo íntegros
+                    expect(page.locator(".project-jump a")).to_have_count(2)
+                    assert page.locator(".project-jump a").evaluate_all("(links) => links.every(link => document.querySelector(link.getAttribute(\'href\')))")
+                    expect(page.locator("#projetos-profissionais")).to_have_count(1)
+                    expect(page.locator("#projetos-estudo")).to_have_count(1)
+                    expect(page.locator(".study-card")).to_have_count(3)
+                    expect(page.locator(".study-card .study-capability")).to_have_count(3)
+                    expect(page.locator(".study-card .demo-link")).to_have_count(3)
                     page.set_viewport_size({"width": 390, "height": 844})
                     page.goto(url)
                     toggle = page.get_by_role("button", name="Menu")
-                    navigation = page.get_by_role("navigation")
+                    navigation = page.get_by_role("navigation", name="Navegação principal")
                     expect(navigation).to_be_hidden()
                     toggle.focus()
                     page.keyboard.press("Enter")
@@ -149,7 +157,7 @@ def check(axe_path=None):
                     )
                     fallback = context.new_page()
                     fallback.goto(url)
-                    expect(fallback.get_by_role("navigation")).to_be_visible()
+                    expect(fallback.get_by_role("navigation", name="Navegação principal")).to_be_visible()
                     expect(fallback.locator('a[href="#projetos"]').first).to_be_visible()
                     expect(fallback.locator(".gallery-link")).to_have_count(7)
                     assert fallback.locator(".gallery-link").first.get_attribute("href").endswith("impressao.png")

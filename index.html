@@ -29,7 +29,7 @@
     <link rel="canonical" href="https://ivannvictor.github.io/portfolio/" />
     <title>Victor Azevedo | Operações, Python e Automação</title>
     <link rel="icon" href="images/victor_favicon.ico" sizes="32x32" />
-    <link rel="stylesheet" href="css/style.css?v=3.0.0" />
+    <link rel="stylesheet" href="css/style.css?v=3.2.0" />
     <script src="js/menu.js" defer></script>
     <script src="js/contact.js" defer></script>
     <script src="js/reveal.js" defer></script>
@@ -166,8 +166,12 @@
           </p>
         </div>
         <p class="projects-intro">Comece pelos estudos de caso profissionais; os projetos de estudo aparecem na sequência.</p>
+        <nav class="project-jump" aria-label="Explorar categorias de projetos">
+          <a href="#projetos-profissionais">Projetos profissionais <span aria-hidden="true">↗</span></a>
+          <a href="#projetos-estudo">Projetos de estudo <span aria-hidden="true">↗</span></a>
+        </nav>
         <div class="projects">
-          <article class="project featured">
+          <article class="project featured" id="projetos-profissionais">
             <div
               class="zpl-gallery"
               aria-label="Telas do Gerenciador de Etiquetas ZPL"
@@ -395,7 +399,7 @@
           </article>
           <article class="project process-case">
             <div class="project-art training process-art" aria-hidden="true"><span>PROCESSO OPERACIONAL</span><strong>Do ERP<br />à postagem.</strong><div class="flow"><span>01<br />Omie</span><span>02<br />XML NF-e</span><span>03<br />SGPWeb</span></div></div>
-            <div class="project-body"><p class="eyebrow">02 / Estudo de caso operacional</p><h3>Otimização da expedição: Omie, Correios e SGPWeb</h3><p>Padronização do fluxo de cotação e preparação de etiquetas, respeitando as limitações de múltiplos volumes.</p><p class="stack">ERP Omie · Correios · XML NF-e · SGPWeb · Processos</p><details class="case-details"><summary>Entenda o fluxo e seus limites</summary><div><p><strong>Um volume.</strong> Cotação de PAC e SEDEX pela integração configurada entre Omie e Correios.</p><p><strong>Múltiplos volumes.</strong> O Omie não conclui a cotação multivolume no fluxo utilizado. A NF-e é exportada em XML e importada no SGPWeb para preparar etiquetas individuais por caixa, reduzindo a redigitação.</p><p><strong>Resultado.</strong> O conjunto das melhorias de expedição trouxe redução estimada de aproximadamente 50% no tempo por pedido, segundo relato operacional, sem medição independente.</p><p><strong>Limite.</strong> Este estudo descreve um processo operacional, não uma integração API multivolume dentro do Omie.</p></div></details></div>
+            <div class="project-body"><p class="eyebrow">02 / Estudo de caso operacional</p><h3>Otimização da expedição: Omie, Correios e SGPWeb</h3><p>Padronização do fluxo de cotação e preparação de etiquetas, respeitando as limitações de múltiplos volumes.</p><p class="stack">ERP Omie · Correios · XML NF-e · SGPWeb · Processos</p><div class="case-highlights" aria-label="Destaques do processo"><div><strong>PAC e SEDEX</strong><span>Cotação contratual para um volume</span></div><div><strong>XML NF-e</strong><span>Transferência de dados para postagem</span></div><div><strong>Por caixa</strong><span>Etiquetas individuais no SGPWeb</span></div></div><details class="case-details"><summary>Entenda o fluxo e seus limites</summary><div><p><strong>Um volume.</strong> Cotação de PAC e SEDEX pela integração configurada entre Omie e Correios.</p><p><strong>Múltiplos volumes.</strong> O Omie não conclui a cotação multivolume no fluxo utilizado. A NF-e é exportada em XML e importada no SGPWeb para preparar etiquetas individuais por caixa, reduzindo a redigitação.</p><p><strong>Resultado.</strong> O conjunto das melhorias de expedição trouxe redução estimada de aproximadamente 50% no tempo por pedido, segundo relato operacional, sem medição independente.</p><p><strong>Limite.</strong> Este estudo descreve um processo operacional, não uma integração API multivolume dentro do Omie.</p></div></details></div>
           </article>
           <article class="project">
             <div class="project-art training" aria-hidden="true">
@@ -414,7 +418,7 @@
                 etapas, com roteiro, navegação por teclado e orientações para o
                 treinamento.
               </p>
-              <p class="stack">HTML · CSS · JavaScript</p>
+              <p class="stack">HTML · CSS · JavaScript</p><div class="case-highlights" aria-label="Destaques do treinamento"><div><strong>15–30 min</strong><span>Treinamento presencial planejado</span></div><div><strong>3 áreas</strong><span>Vendas, atendimento e financeiro</span></div><div><strong>Passo a passo</strong><span>Cotação no ERP e escolha de serviço</span></div></div>
               <details class="case-details">
                 <summary>O processo em etapas</summary>
                 <div>
@@ -453,8 +457,8 @@
               >
             </div>
           </article>
-          <div class="study-divider" role="group" aria-label="Projetos de estudo"><p class="eyebrow">PROJETOS DE ESTUDO</p><h3>Fundamentos em prática</h3><p>Experimentos de interface, lógica e interação que complementam os projetos profissionais.</p></div>
-          <article class="project">
+          <div class="study-divider" id="projetos-estudo" role="group" aria-label="Projetos de estudo"><p class="eyebrow">PROJETOS DE ESTUDO</p><h3>Fundamentos em prática</h3><p>Experimentos de interface, lógica e interação que complementam os projetos profissionais.</p></div>
+          <article class="project study-card">
             <img
               class="project-art"
               src="images/pokedex-preview.webp"
@@ -466,6 +470,7 @@
             <div class="project-body">
               <p class="eyebrow">04 / Projeto de estudo</p>
               <h3>Pokédex</h3>
+              <p class="study-capability">Catálogo estático · Tema claro/escuro</p>
               <p>
                 Catálogo de dez Pokémon com cartões e alternância entre temas
                 claro e escuro. Um estudo de composição e interação com
@@ -512,7 +517,7 @@
               >
             </div>
           </article>
-          <article class="project">
+          <article class="project study-card">
             <div class="project-art tasks" aria-hidden="true">
               <span>UM PASSO DE CADA VEZ</span
               ><strong>Dar espaço<br />às boas ideias.</strong>
@@ -522,6 +527,7 @@
             <div class="project-body">
               <p class="eyebrow">05 / Projeto de estudo</p>
               <h3>Lista de tarefas</h3>
+              <p class="study-capability">Persistência local · Operações CRUD</p>
               <p>
                 Lista de tarefas com inclusão, conclusão, exclusão e
                 persistência local. Experimente a versão adaptada diretamente no
@@ -571,7 +577,7 @@
               >
             </div>
           </article>
-          <article class="project">
+          <article class="project study-card">
             <img
               class="project-art"
               src="images/login-preview.webp"
@@ -583,6 +589,7 @@
             <div class="project-body">
               <p class="eyebrow">06 / Projeto de estudo</p>
               <h3>Interface de login</h3>
+              <p class="study-capability">Formulário responsivo · Sem autenticação</p>
               <p>
                 Um estudo de formulário e adaptação de layout para diferentes
                 telas. O projeto apresenta a interface visual, sem autenticação
