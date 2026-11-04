@@ -1,5 +1,7 @@
 """Functional smoke checks. Requires Playwright and a local Chromium executable."""
 import argparse
+import json
+import xml.etree.ElementTree as ET
 import functools
 import http.server
 import os
@@ -66,6 +68,24 @@ def check(axe_path=None):
                         print(f"PASS: {width}px, images, anchors and layout"
                               + (", axe WCAG A/AA" if axe_path else ""))
 
+                    # v3.6: JSON-LD válido, sitemap sem links inexistentes
+                    structured = json.loads(page.locator('script[type="application/ld+json"]').text_content())
+                    assert structured["@context"] == "https://schema.org"
+                    assert structured["@type"] == "Person"
+                    assert structured["url"] == "https://ivannvictor.github.io/portfolio/"
+                    assert len(structured["sameAs"]) == 2
+                    assert structured["image"].endswith("/images/victor-profile.webp")
+                    assert (ROOT / "images/victor-profile.webp").is_file()
+                    sitemap = ET.parse(ROOT / "sitemap.xml")
+                    locs = [node.text for node in sitemap.findall(
+                        ".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc"
+                    )]
+                    assert len(locs) == len(set(locs)) == 3
+                    prefix = "https://ivannvictor.github.io/portfolio/"
+                    for loc in locs:
+                        assert loc.startswith(prefix), loc
+                        relative = loc[len(prefix):] or "index.html"
+                        assert (ROOT / relative).is_file(), relative
                     # v3.3: metadados de SEO e compartilhamento social
                     expect(page.locator('link[rel="canonical"]')).to_have_attribute(
                         "href", "https://ivannvictor.github.io/portfolio/"
