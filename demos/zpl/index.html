@@ -13,7 +13,8 @@ a{color:var(--mint)}a:focus-visible,button:focus-visible{outline:3px solid var(-
 .eyebrow{color:var(--mint);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.12;max-width:800px}h2{font-size:1.5rem}p{max-width:75ch}.muted{color:var(--muted)}
 .panel{background:linear-gradient(135deg,rgba(48,113,120,.36),rgba(18,40,58,.94));border:1px solid rgba(164,235,226,.34);box-shadow:inset 0 1px rgba(255,255,255,.15),0 18px 42px rgba(0,0,0,.2);border-radius:20px;padding:clamp(18px,4vw,32px)}
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:24px 0}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:24px 0;padding:0;list-style:none}
+.steps>.step{list-style:none}.steps>.step::marker{content:""}
 .step{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0;color:var(--muted)}
 .step[aria-current="step"]{background:#285a60;color:white;border-color:var(--mint)}
 .step.complete{border-color:#7ec7b4}
@@ -104,6 +105,7 @@ footer{color:var(--muted);font-size:.9rem}
 <p>Um fluxo simplificado das funcionalidades documentadas do projeto: entrada de arquivos, classificação e controle de duplicidade, envio à fila de impressão e registro de eventos. As regras de reimpressão, auditoria e reconciliação são apresentadas apenas como exemplos didáticos.</p>
 <p>Os estados apresentados são exemplos didáticos, não dados reais, medições de desempenho ou comprovação de impressão.</p>
 </section>
+<nav aria-label="Navegação de retorno" style="margin:32px 0 12px"><a href="../../index.html#projetos">← Voltar aos projetos</a></nav>
 </main>
 <footer>Projeto empresarial apresentado com identidade preservada. Demonstração local, sem integrações externas.</footer>
 </body></html>
