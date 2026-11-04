@@ -98,7 +98,7 @@ def check(axe_path=None):
                         "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
                     ) == 2
                     assert "não equivale à confirmação física" in page.locator(".case-caveat").inner_text()
-                    assert "não elimina a conferência" in page.locator(".process-case").inner_text()
+                    assert "não elimina a conferência" in page.locator(".process-case").text_content()
                     # v3.2: navegação acessível e cartões de estudo íntegros
                     expect(page.locator(".project-jump a")).to_have_count(2)
                     assert page.locator(".project-jump a").evaluate_all("(links) => links.every(link => document.querySelector(link.getAttribute(\'href\')))")
