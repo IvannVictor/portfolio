@@ -3,7 +3,7 @@
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (!("IntersectionObserver" in window) || motion.matches) return;
   const selectors = [
-    ".section-heading", ".projects-intro", ".project-card",
+    ".section-heading", ".projects-intro", ".project",
     ".study-divider", ".expertise-grid > *", ".about > *",
     ".career-heading", ".career-timeline li", ".contact-grid > *",
     ".case-journey > div"
