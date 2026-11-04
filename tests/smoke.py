@@ -66,6 +66,26 @@ def check(axe_path=None):
                         print(f"PASS: {width}px, images, anchors and layout"
                               + (", axe WCAG A/AA" if axe_path else ""))
 
+                    # v3.3: metadados de SEO e compartilhamento social
+                    expect(page.locator('link[rel="canonical"]')).to_have_attribute(
+                        "href", "https://ivannvictor.github.io/portfolio/"
+                    )
+                    expect(page.locator('meta[name="description"]')).to_have_count(1)
+                    expect(page.locator('meta[property="og:image"]')).to_have_count(1)
+                    expect(page.locator('meta[name="twitter:image"]')).to_have_count(1)
+                    expect(page.locator('html')).to_have_attribute("lang", "pt-BR")
+                    expect(page.locator('meta[name="twitter:title"]')).to_have_count(1)
+                    expect(page.locator('meta[name="twitter:description"]')).to_have_count(1)
+                    expect(page.locator('meta[property="og:url"]')).to_have_attribute(
+                        "content", "https://ivannvictor.github.io/portfolio/"
+                    )
+                    expect(page.locator('meta[name="twitter:card"]')).to_have_attribute(
+                        "content", "summary"
+                    )
+                    expect(page.locator('link[rel="preload"][as="image"]')).to_have_attribute(
+                        "href", "images/victor-profile.webp"
+                    )
+                    expect(page.locator('img[loading="lazy"]:not([decoding="async"])')).to_have_count(0)
                     # v3.2: navegação acessível e cartões de estudo íntegros
                     expect(page.locator(".project-jump a")).to_have_count(2)
                     assert page.locator(".project-jump a").evaluate_all("(links) => links.every(link => document.querySelector(link.getAttribute(\'href\')))")

@@ -27,7 +27,9 @@ if (toggle && navigation) {
     const link = event.target.closest("a");
     if (!link) return;
     closeMenu();
-    const target = document.querySelector(link.hash);
+    const target = link.hash && link.hash.length > 1
+      ? document.getElementById(decodeURIComponent(link.hash.slice(1)))
+      : null;
     if (target) {
       target.setAttribute("tabindex", "-1");
       target.focus({ preventScroll: true });
