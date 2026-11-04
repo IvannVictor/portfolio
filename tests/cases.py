@@ -46,6 +46,18 @@ def test_flow():
                         page.locator("#restart").click()
                         expect(page.locator('[aria-current="step"]')).to_have_attribute("data-step", "0")
                         expect(page.locator("#event-log li")).to_have_count(1)
+                        page.locator("#check-duplicate").click()
+                        expect(page.locator("#duplicate-result")).to_contain_text("DUPLICADA")
+                        page.locator("#label-value").fill("AA987654321BR")
+                        page.locator("#check-duplicate").click()
+                        expect(page.locator("#duplicate-result")).to_contain_text("NOVA")
+                        page.locator("#label-type").select_option("danfe")
+                        page.locator("#check-duplicate").click()
+                        expect(page.locator("#duplicate-result")).to_contain_text("DUPLICADA")
+                        page.locator("#label-value").fill(" ")
+                        page.locator("#check-duplicate").click()
+                        expect(page.locator("#duplicate-result")).to_contain_text("Informe")
+                        expect(page.locator("#audit-heading")).to_be_visible()
                         assert not errors, errors
                         assert not remote, remote
                         page.close()
