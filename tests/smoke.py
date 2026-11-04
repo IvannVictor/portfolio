@@ -93,6 +93,10 @@ def check(axe_path=None):
                     assert page.locator(".case-pipeline").evaluate(
                         "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
                     ) == 1
+                    page.set_viewport_size({"width": 1440, "height": 900})
+                    assert page.locator(".case-pipeline").evaluate(
+                        "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
+                    ) == 2
                     assert "não equivale à confirmação física" in page.locator(".case-caveat").inner_text()
                     assert "não elimina a conferência" in page.locator(".process-case").inner_text()
                     # v3.2: navegação acessível e cartões de estudo íntegros
