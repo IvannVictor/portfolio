@@ -68,6 +68,7 @@ def check(axe_path=None):
 
                     # v3.2: navegação acessível e cartões de estudo íntegros
                     expect(page.locator(".project-jump a")).to_have_count(2)
+                    assert page.locator(".project-jump a").evaluate_all("(links) => links.every(link => document.querySelector(link.getAttribute(\'href\')))")
                     expect(page.locator("#projetos-profissionais")).to_have_count(1)
                     expect(page.locator("#projetos-estudo")).to_have_count(1)
                     expect(page.locator(".study-card")).to_have_count(3)
