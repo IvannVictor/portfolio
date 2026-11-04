@@ -1427,3 +1427,14 @@ body {
     display: flex;
   }
 }
+
+/* v3.8 — Currículos: cartões acessíveis e responsivos */
+.resume-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.resume-card{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:28px;min-width:0;border:1px solid var(--glass-stroke);border-radius:16px;background:var(--glass-surface);box-shadow:var(--glass-shadow)}
+.resume-card h3{font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.2}
+.resume-card p{color:var(--muted);font-size:.92rem;line-height:1.6;flex:1}
+.resume-card .button{font-size:.82rem;min-height:44px;gap:12px;padding:12px 14px}
+.resume-tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
+@media(max-width:900px){.resume-grid{grid-template-columns:1fr}.resume-card{padding:24px}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.resume-card{transition:border-color .25s ease,transform .25s ease}.resume-card:hover{border-color:var(--accent);transform:translateY(-3px)}}
+@media(prefers-reduced-motion:reduce){.resume-card{transition:none}}
