@@ -30,7 +30,8 @@ def check():
                         if route.request.url.startswith(base):
                             route.continue_()
                         else:
-                            requests.append(route.request.url)
+                            if route.request.url != 'https://static.cloudflareinsights.com/beacon.min.js':
+                                requests.append(route.request.url)
                             route.abort()
                     page.route('**/*', guard)
                     def fallback_html(route):
