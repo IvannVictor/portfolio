@@ -98,7 +98,7 @@ def check(axe_path=None):
                     locs = [node.text for node in sitemap.findall(
                         ".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc"
                     )]
-                    assert len(locs) == len(set(locs)) == 3
+                    assert len(locs) == len(set(locs)) == 8
                     prefix = "https://ivannvictor.github.io/portfolio/"
                     for loc in locs:
                         assert loc.startswith(prefix), loc
