@@ -55,4 +55,27 @@
   next.addEventListener("click", () => { current = Math.min(stages.length - 1, current + 1); render(); });
   restart.addEventListener("click", () => { current = 0; render(); });
   render();
+  const type = document.getElementById("label-type");
+  const value = document.getElementById("label-value");
+  const valueLabel = document.getElementById("value-label");
+  const check = document.getElementById("check-duplicate");
+  const result = document.getElementById("duplicate-result");
+  if (type && value && valueLabel && check && result) {
+    type.addEventListener("change", () => {
+      valueLabel.textContent = type.value === "correios" ? "Código de rastreio fictício" : "Número de NF fictício";
+      value.value = type.value === "correios" ? "AA123456789BR" : "12345";
+      result.textContent = "Selecione verificar para consultar o histórico fictício.";
+    });
+    check.addEventListener("click", () => {
+      const normalized = value.value.trim().toUpperCase().replace(/\\s+/g, "");
+      if (!normalized) {
+        result.textContent = "Informe uma chave fictícia para verificar.";
+        return;
+      }
+      const duplicate = type.value === "correios" ? normalized === "AA123456789BR" : normalized === "12345";
+      result.textContent = duplicate
+        ? "DUPLICADA (simulação): chave já existente no histórico fictício. O processamento normal seria bloqueado."
+        : "NOVA (simulação): chave ausente do histórico fictício. Isso não confirma autorização real de impressão.";
+    });
+  }
 })();
