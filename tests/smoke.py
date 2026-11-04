@@ -68,6 +68,14 @@ def check(axe_path=None):
                         print(f"PASS: {width}px, images, anchors and layout"
                               + (", axe WCAG A/AA" if axe_path else ""))
 
+                    # v3.7: menu começa recolhido sem deslocar o layout mobile
+                    assert page.locator("html.js-enabled").count() == 1
+                    if page.viewport_size["width"] <= 760:
+                        assert page.locator("#navegacao").is_hidden()
+                        page.locator(".menu-toggle").click()
+                        assert page.locator("#navegacao").is_visible()
+                        page.locator(".menu-toggle").click()
+                        assert page.locator("#navegacao").is_hidden()
                     # v3.7: prioridades de rede não competem com a imagem principal
                     expect(page.locator('img[loading="lazy"][fetchpriority="low"]')).to_have_count(9)
                     expect(page.locator('img[loading="lazy"]:not([fetchpriority="low"])')).to_have_count(0)
