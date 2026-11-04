@@ -65,7 +65,9 @@ def test_flow():
                     fallback = nojs.new_page()
                     fallback.goto(base + "demos/zpl/index.html")
                     expect(fallback.locator("#step-title")).to_contain_text("Recebimento")
-                    expect(fallback.get_by_role("link", name="Voltar aos projetos")).to_be_visible()
+                    expect(fallback.get_by_role("link", name="Voltar aos projetos")).to_have_count(2)
+                    expect(fallback.get_by_role("banner").get_by_role("link", name="Voltar aos projetos")).to_be_visible()
+                    expect(fallback.get_by_role("navigation", name="Navegação de retorno").get_by_role("link", name="Voltar aos projetos")).to_be_visible()
                     nojs.close()
                 finally:
                     browser.close()
