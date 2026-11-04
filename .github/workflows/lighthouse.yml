@@ -1,0 +1,44 @@
+name: Auditoria Lighthouse v3.7
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Iniciar servidor local
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/portfolio-http.log 2>&1 &
+          sleep 2
+          curl --fail http://127.0.0.1:8000/ > /dev/null
+      - name: Auditar mobile e desktop
+        run: |
+          mkdir -p lighthouse-reports
+          npx --yes lighthouse@12.8.2 http://127.0.0.1:8000/ --chrome-flags="--headless --no-sandbox" --output=json --output-path=lighthouse-reports/mobile.json --quiet
+          npx --yes lighthouse@12.8.2 http://127.0.0.1:8000/ --preset=desktop --chrome-flags="--headless --no-sandbox" --output=json --output-path=lighthouse-reports/desktop.json --quiet
+          node - <<'NODE'
+          const fs = require('fs');
+          for (const device of ['mobile', 'desktop']) {
+            const report = JSON.parse(fs.readFileSync('lighthouse-reports/' + device + '.json'));
+            const scores = Object.fromEntries(Object.entries(report.categories).map(([key, value]) => [key, Math.round(value.score * 100)]));
+            console.log(device, scores);
+            for (const key of ['largest-contentful-paint', 'cumulative-layout-shift', 'total-blocking-time']) {
+              console.log(' ', key, report.audits[key]?.displayValue ?? 'indisponível');
+            }
+          }
+          NODE
+      - name: Guardar relatórios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-v3-7
+          path: lighthouse-reports/
+          if-no-files-found: warn
