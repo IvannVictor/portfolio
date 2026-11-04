@@ -126,19 +126,19 @@ def check(axe_path=None):
                     expect(page.locator('img[loading="lazy"]:not([decoding="async"])')).to_have_count(0)
                     # v3.5: arquitetura acessível e conteúdo operacional verificável
                     expect(page.get_by_role("heading", name="Arquitetura e controles operacionais")).to_have_count(1)
-                    expect(page.locator(".case-pipeline li")).to_have_count(8)
-                    expect(page.locator(".case-pipeline li strong")).to_have_text(
+                    expect(page.locator("#zpl-architecture-title + .case-pipeline li")).to_have_count(4)
+                    expect(page.locator("#zpl-architecture-title + .case-pipeline li strong")).to_have_text(
                         ["Entrada", "Tratamento", "Validação", "Saída e consulta"]
                     )
                     page.set_viewport_size({"width": 390, "height": 844})
-                    assert page.locator(".case-pipeline").evaluate(
+                    assert page.locator("#zpl-architecture-title + .case-pipeline").evaluate(
                         "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
                     ) == 1
                     page.set_viewport_size({"width": 1440, "height": 900})
-                    assert page.locator(".case-pipeline").evaluate(
+                    assert page.locator("#zpl-architecture-title + .case-pipeline").evaluate(
                         "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
                     ) == 2
-                    assert "não equivale à confirmação física" in page.locator(".case-caveat").inner_text()
+                    assert "não equivale à confirmação física" in page.locator("#zpl-architecture-title").locator("..").locator(".case-caveat").inner_text()
                     assert "não elimina a conferência" in page.locator(".process-case").text_content()
                     # v3.2: navegação acessível e cartões de estudo íntegros
                     expect(page.locator(".project-jump a")).to_have_count(2)
