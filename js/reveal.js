@@ -28,9 +28,16 @@
     observer.observe(element);
   });
   document.documentElement.classList.add("reveal-ready");
-  motion.addEventListener("change", (event) => {
+  const disableReveal = (event) => {
     if (!event.matches) return;
     observer.disconnect();
+    elements.forEach((element) => {
+      element.classList.add("is-visible");
+      element.removeAttribute("data-reveal");
+      element.style.removeProperty("--reveal-delay");
+    });
     document.documentElement.classList.remove("reveal-ready");
-  });
+    motion.removeEventListener("change", disableReveal);
+  };
+  motion.addEventListener("change", disableReveal);
 })();

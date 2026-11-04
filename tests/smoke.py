@@ -102,10 +102,12 @@ def check(axe_path=None):
                     toggle.focus()
                     page.keyboard.press("Enter")
                     expect(navigation).to_be_visible()
+                    expect(toggle).to_have_attribute("aria-expanded", "true")
                     page.keyboard.press("Tab")
                     expect(navigation.locator("a").first).to_be_focused()
                     page.keyboard.press("Escape")
                     expect(navigation).to_be_hidden()
+                    expect(toggle).to_have_attribute("aria-expanded", "false")
                     expect(toggle).to_be_focused()
                     toggle.click()
                     navigation.get_by_role("link", name="Projetos").click()
@@ -188,6 +190,21 @@ def check(axe_path=None):
                     assert reduced_page.evaluate(
                         "getComputedStyle(document.documentElement).scrollBehavior"
                     ) == "auto"
+                    expect(reduced_page.locator(".reveal-ready")).to_have_count(0)
+                    # v3.4: mudança de preferência durante a sessão deve revelar
+                    # imediatamente conteúdo ainda não visitado.
+                    motion_page = browser.new_page(
+                        viewport={"width": 390, "height": 844},
+                        reduced_motion="no-preference",
+                    )
+                    motion_page.goto(url, wait_until="networkidle")
+                    motion_page.evaluate("window.scrollTo(0, 0)")
+                    motion_page.emulate_media(reduced_motion="reduce")
+                    expect(motion_page.locator(".reveal-ready")).to_have_count(0)
+                    expect(motion_page.locator("[data-reveal]")).to_have_count(0)
+                    assert motion_page.evaluate("""() => [...document.querySelectorAll(".is-visible")]
+                        .every(element => getComputedStyle(element).opacity !== "0")""")
+                    motion_page.close()
                     print("PASS: reduced motion preference")
                     assert not errors, errors
                     assert not failed_resources, failed_resources
