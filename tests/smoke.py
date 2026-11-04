@@ -52,7 +52,7 @@ def check(axe_path=None):
                         assert page.evaluate(
                             "document.documentElement.scrollWidth <= innerWidth"
                         ), f"Horizontal overflow at {width}px"
-                        expect(page.locator(".hero .button")).to_be_visible()
+                        expect(page.locator('.hero .button[href="#projetos"]')).to_be_visible()
                         expect(page.locator(".project")).to_have_count(6)
                         assert page.evaluate("""() => [...document.querySelectorAll('a[href^="#"]')]
                             .every(a => a.hash.length > 1 && document.getElementById(a.hash.slice(1)))""")
@@ -85,7 +85,7 @@ def check(axe_path=None):
                     expect(page.locator('img[src="images/victor-profile.webp"]')).to_have_attribute(
                         "loading", "eager"
                     )
-                    assert page.locator('link[rel="stylesheet"]').get_attribute("href").endswith("v=3.8.0")
+                    assert page.locator('link[rel="stylesheet"]').get_attribute("href").endswith("v=3.9.0")
                     # v3.6: JSON-LD válido, sitemap sem links inexistentes
                     structured = json.loads(page.locator('script[type="application/ld+json"]').text_content())
                     assert structured["@context"] == "https://schema.org"
@@ -237,6 +237,23 @@ def check(axe_path=None):
                     expect(fallback.locator('a[href="#projetos"]').first).to_be_visible()
                     expect(fallback.locator(".gallery-link")).to_have_count(7)
                     assert fallback.locator(".gallery-link").first.get_attribute("href").endswith("impressao.png")
+                    # v3.9: conversão para recrutadores e navegação acessível
+                    expect(page.locator('#navegacao a[href="#curriculos"]')).to_have_count(1)
+                    expect(page.locator('.hero .button-secondary[href="#curriculos"]')).to_have_count(1)
+                    expect(page.locator('.hero-shortcut a[href="#contato"]')).to_have_count(1)
+                    expect(page.locator('#curriculos .resume-contact a[href="#contato"]')).to_have_count(1)
+                    page.set_viewport_size({"width": 390, "height": 844})
+                    page.goto(url, wait_until="networkidle")
+                    page.locator(".menu-toggle").click()
+                    expect(page.locator('#navegacao a[href="#curriculos"]')).to_be_visible()
+                    page.locator('#navegacao a[href="#curriculos"]').click()
+                    expect(page.locator("#navegacao")).to_be_hidden()
+                    assert page.evaluate("location.hash") == "#curriculos"
+                    page.set_viewport_size({"width": 1440, "height": 900})
+                    page.goto(url, wait_until="networkidle")
+                    page.locator('.hero .button-secondary[href="#curriculos"]').click()
+                    assert page.evaluate("location.hash") == "#curriculos"
+                    print("PASS: recruiter CTA, mobile menu and resume navigation")
                     # v3.8: três currículos, acessíveis e disponíveis para impressão
                     expect(page.locator("#curriculos .resume-card")).to_have_count(3)
                     for slug in ("operacoes", "tecnologia", "fiscal-contabil"):
