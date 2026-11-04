@@ -33,7 +33,7 @@
     if (stateMetric) stateMetric.textContent = current === stages.length - 1 ? "Concluído*" : "Didático";
     if (log) {
       log.replaceChildren();
-      for (const entry of events.slice(0, current + 2)) {
+      for (const entry of events.slice(0, current + 1)) {
         const item = document.createElement("li");
         item.textContent = entry;
         log.appendChild(item);
