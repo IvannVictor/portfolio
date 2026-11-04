@@ -89,10 +89,10 @@ def check(axe_path=None):
                     # v3.5: arquitetura acessível e conteúdo operacional verificável
                     expect(page.get_by_role("heading", name="Arquitetura e controles operacionais")).to_have_count(1)
                     expect(page.locator(".case-pipeline li")).to_have_count(4)
-                    if width <= 390:
-                        assert page.locator(".case-pipeline").evaluate(
-                            "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
-                        ) == 1
+                    page.set_viewport_size({"width": 390, "height": 844})
+                    assert page.locator(".case-pipeline").evaluate(
+                        "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
+                    ) == 1
                     assert "não equivale à confirmação física" in page.locator(".case-caveat").inner_text()
                     assert "não elimina a conferência" in page.locator(".process-case").inner_text()
                     # v3.2: navegação acessível e cartões de estudo íntegros
