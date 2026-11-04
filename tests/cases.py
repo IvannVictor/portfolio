@@ -1,5 +1,7 @@
 """Teste isolado da demonstração v3.1; não envia dados externos."""
 import functools
+import os
+import shutil
 import http.server
 import threading
 from pathlib import Path
@@ -18,7 +20,7 @@ def test_flow():
         base = f"http://127.0.0.1:{server.server_port}/"
         try:
             with sync_playwright() as p:
-                browser = p.chromium.launch()
+                browser = p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('chromium') or None, args=['--no-sandbox'])
                 try:
                     for width in (320, 390, 768, 1440):
                         page = browser.new_page(viewport={"width": width, "height": 900})
@@ -29,15 +31,21 @@ def test_flow():
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), width
                         expect(page.locator('[aria-current="step"]')).to_have_count(1)
                         expect(page.locator("#previous")).to_be_disabled()
+                        expect(page.locator("#metric-processed")).to_have_text("0")
+                        expect(page.locator("#event-log li")).to_have_count(1)
                         for i in range(3):
                             page.locator("#next").click()
                             expect(page.locator('[aria-current="step"]')).to_have_attribute("data-step", str(i + 1))
                         expect(page.locator("#next")).to_be_disabled()
+                        expect(page.locator("#metric-processed")).to_have_text("3")
+                        expect(page.locator("#metric-current")).to_have_text("4/4")
+                        expect(page.locator("#event-log li")).to_have_count(4)
                         assert "não é confirmação" in page.locator("#step-evidence").inner_text() or "não há histórico real" in page.locator("#step-evidence").inner_text()
                         page.locator("#previous").click()
                         expect(page.locator('[aria-current="step"]')).to_have_attribute("data-step", "2")
                         page.locator("#restart").click()
                         expect(page.locator('[aria-current="step"]')).to_have_attribute("data-step", "0")
+                        expect(page.locator("#event-log li")).to_have_count(1)
                         assert not errors, errors
                         assert not remote, remote
                         page.close()
