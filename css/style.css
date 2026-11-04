@@ -1012,3 +1012,15 @@ button:disabled {
   cursor: wait;
   opacity: 0.65;
 }
+
+/* Evolução profissional v2: componentes incrementais */
+.hero-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:32px}
+.hero-metrics>div{padding:16px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);display:flex;flex-direction:column;gap:8px}
+.hero-metrics strong{font-size:clamp(1.2rem,2.2vw,1.8rem);line-height:1.1;color:var(--accent)}
+.hero-metrics span{font-size:.75rem;line-height:1.4;color:var(--muted)}
+.process-art{background:linear-gradient(145deg,#102e40,#153c38);display:flex;flex-direction:column;justify-content:center;gap:24px;padding:32px;color:var(--ink);min-height:270px}
+.process-art>span{font-size:.7rem;letter-spacing:.15em;color:var(--accent);font-weight:700}
+.process-art>strong{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.1}
+.process-art .flow{display:flex;gap:8px;flex-wrap:wrap}
+.process-art .flow span{border:1px solid #547d7d;border-radius:8px;padding:9px 12px;font-size:.8rem}
+@media(max-width:720px){.hero-metrics{grid-template-columns:1fr}.hero-metrics>div{padding:14px}.process-art{min-height:230px}}
