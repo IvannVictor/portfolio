@@ -22,6 +22,10 @@ h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.12;max-width:800px}h2{font-siz
 .detail h3{font-size:1.3rem;margin:0 0 8px}.detail p{margin:8px 0}
 .controls{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
 button,.button{border-radius:12px;border:1px solid var(--mint);padding:12px 20px;font:inherit;font-weight:650;cursor:pointer;background:var(--mint);color:#0b2530}
+label{display:block;margin:10px 0 5px;font-weight:600}select,input{background:#0b1725;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;width:100%;max-width:440px}
+.result{border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:16px;min-height:54px}
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.case-grid article{background:rgba(5,20,30,.45);border:1px solid var(--line);border-radius:14px;padding:18px}
+@media(max-width:650px){.case-grid{grid-template-columns:1fr}}
 button.secondary{background:transparent;color:var(--text);border-color:var(--line)}button:disabled{opacity:.5;cursor:not-allowed}
 .note{border-left:3px solid var(--mint);padding-left:14px;margin-top:24px}
 .dashboard{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
@@ -73,9 +77,31 @@ footer{color:var(--muted);font-size:.9rem}
 </section>
 <p class="note"><strong>Limite importante:</strong> aceite pelo spooler do Windows não comprova impressão física. Pendências e reconciliações exigem conferência operacional.</p>
 </section>
+<section class="panel" aria-labelledby="duplicate-heading" style="margin-top:24px">
+<h2 id="duplicate-heading">Simulador de duplicidade</h2>
+<p class="muted">Compare dados fictícios com um histórico de exemplo. Nada é salvo ou transmitido.</p>
+<label for="label-type">Tipo de etiqueta</label>
+<select id="label-type"><option value="correios">Correios — rastreio</option><option value="danfe">Mini DANFE — NF + tipo</option></select>
+<label for="label-value" id="value-label">Código de rastreio fictício</label>
+<input id="label-value" value="AA123456789BR" maxlength="40" autocomplete="off">
+<button type="button" id="check-duplicate" style="margin-top:14px">Verificar exemplo</button>
+<div class="result" id="duplicate-result" role="status" aria-live="polite">Selecione verificar para consultar o histórico fictício.</div>
+<p class="muted">Histórico demonstrativo: Correios AA123456789BR e Mini DANFE NF 12345. Outras chaves são tratadas como novas apenas nesta simulação.</p>
+</section>
+<section class="panel" aria-labelledby="audit-heading" style="margin-top:24px">
+<h2 id="audit-heading">Auditoria e reconciliação — cenário ilustrativo</h2>
+<p>O envio ao spooler não garante a impressão física. Se houver dúvida, a operação deve conferir a situação antes de reconciliar o evento.</p>
+<div class="case-grid">
+<article><strong>01 · Pendente</strong><p>Evento original preservado para consulta.</p></article>
+<article><strong>02 · Conferência</strong><p>Operador verifica o resultado físico, fora desta demonstração.</p></article>
+<article><strong>03 · Reconciliação</strong><p>Um novo evento documenta a confirmação, sem apagar o pendente original.</p></article>
+<article><strong>04 · Reimpressão</strong><p>Quando autorizada, exige justificativa e confirmação explícita do operador.</p></article>
+</div>
+<p class="note">Não há reconciliação nem reimpressão real nesta página.</p>
+</section>
 <section aria-labelledby="about-heading">
 <h2 id="about-heading">O que esta demonstração representa?</h2>
-<p>Um fluxo simplificado das funcionalidades documentadas do projeto: entrada de arquivos, classificação e controle de duplicidade, envio à fila de impressão e registro de eventos. As regras completas de reimpressão, auditoria e reconciliação serão abordadas em módulos posteriores.</p>
+<p>Um fluxo simplificado das funcionalidades documentadas do projeto: entrada de arquivos, classificação e controle de duplicidade, envio à fila de impressão e registro de eventos. As regras de reimpressão, auditoria e reconciliação são apresentadas apenas como exemplos didáticos.</p>
 <p>Os estados apresentados são exemplos didáticos, não dados reais, medições de desempenho ou comprovação de impressão.</p>
 </section>
 </main>
