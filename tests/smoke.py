@@ -104,6 +104,13 @@ def check(axe_path=None):
                         assert loc.startswith(prefix), loc
                         relative = loc[len(prefix):] or "index.html"
                         assert (ROOT / relative).is_file(), relative
+                    # v3.9 etapa 5: somente o beacon oficial, sem eventos de formulário
+                    beacon = page.locator('script[src="https://static.cloudflareinsights.com/beacon.min.js"]')
+                    expect(beacon).to_have_count(1)
+                    assert beacon.get_attribute("type") == "module"
+                    assert json.loads(beacon.get_attribute("data-cf-beacon")) == {
+                        "token": "cb11bd01f1c04f13ba7f77d34c35f95b"
+                    }
                     # v3.3: metadados de SEO e compartilhamento social
                     expect(page.locator('link[rel="canonical"]')).to_have_attribute(
                         "href", "https://ivannvictor.github.io/portfolio/"
