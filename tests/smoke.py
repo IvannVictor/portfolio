@@ -248,6 +248,24 @@ def check(axe_path=None):
                         expect(resume_page.locator("main h1")).to_have_text("IVAN VICTOR AZEVEDO SILVA")
                         expect(resume_page.get_by_role("button", name="Imprimir / Salvar como PDF")).to_be_visible()
                         assert resume_page.locator("main").inner_text().count("EXPERIÊNCIA PROFISSIONAL") == 1
+                        expect(resume_page.locator(".glass-frame .resume-paper")).to_have_count(1)
+                        assert resume_page.locator('link[href^="liquid-glass.css"]').count() == 1
+                        assert "radial-gradient" in resume_page.locator("body").evaluate(
+                            "(el) => getComputedStyle(el).backgroundImage"
+                        )
+                        for width in (320, 390, 768, 1440):
+                            resume_page.set_viewport_size({"width": width, "height": 900})
+                            assert resume_page.evaluate(
+                                "document.documentElement.scrollWidth <= innerWidth"
+                            ), f"Resume overflow {slug}: {width}"
+                        resume_page.emulate_media(media="print")
+                        assert resume_page.locator(".toolbar").evaluate(
+                            "(el) => getComputedStyle(el).display"
+                        ) == "none"
+                        assert resume_page.locator(".glass-frame").evaluate(
+                            "(el) => getComputedStyle(el).backgroundColor"
+                        ) == "rgb(255, 255, 255)"
+                        resume_page.emulate_media(media="screen")
                         resume_page.close()
                     print("PASS: three resume pages and print actions")
                     print("PASS: navigation and image links without JavaScript")

@@ -1,0 +1,27 @@
+/* v3.8.1 | Visualização Liquid Glass — apenas tela; impressão permanece documental */
+:root{color-scheme:dark;--navy:#061824;--navy-2:#0a2c39;--mint:#6bf3d5;--ice:#b5f7f0;--paper:#fff;font-family:Inter,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+html{min-width:0}
+body{margin:0;min-height:100vh;color:#e8f8fa;background:radial-gradient(ellipse 55% 45% at 5% 18%,#12645a7d,transparent 75%),radial-gradient(ellipse 50% 55% at 95% 75%,#117a7970,transparent 76%),linear-gradient(145deg,#04121e,#09283a 55%,#061724);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#a9fff50b 43%,transparent 60%);z-index:0}
+.page-shell{position:relative;max-width:1050px;margin:0 auto;padding:26px 22px 60px}
+.toolbar{display:flex;gap:14px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:30px}
+.toolbar a,.toolbar button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 20px;border:1px solid #9fffee75;border-radius:14px;background:linear-gradient(145deg,#8fffff25,#7bded10e);color:#eafffc;box-shadow:inset 0 1px #ffffff50,0 8px 25px #0004;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font:600 14px/1.4 inherit;text-decoration:none;cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
+.toolbar a:hover,.toolbar button:hover{transform:translateY(-2px);border-color:var(--mint);background:#6bf3d52d}
+.toolbar :is(a,button):focus-visible{outline:3px solid var(--mint);outline-offset:4px}
+.intro{text-align:center;margin:0 auto 28px;max-width:720px}
+.intro .eyebrow{font-size:12px;font-weight:750;letter-spacing:.18em;color:var(--mint);text-transform:uppercase}
+.intro h2{font-size:clamp(24px,4vw,38px);line-height:1.2;margin:12px 0;color:#f3fffd;letter-spacing:-.025em}
+.intro p{font-size:15px;color:#c5dcdf;line-height:1.65}
+.glass-frame{position:relative;max-width:960px;margin:auto;padding:clamp(12px,2.5vw,28px);border:1px solid #b4fff88c;border-radius:26px;background:linear-gradient(130deg,#b3fff32e,#f4ffff09 38%,#66d5d22a 100%);box-shadow:inset 0 1px #ffffff9c,inset 0 -1px #a5fff42e,0 30px 90px #0008,0 0 38px #52ffe51c;backdrop-filter:blur(22px) saturate(145%);-webkit-backdrop-filter:blur(22px) saturate(145%)}
+.glass-frame::before{content:"";position:absolute;top:0;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,#a2fff3,transparent);filter:drop-shadow(0 0 9px #71ffe8)}
+.resume-paper{background:var(--paper);color:#152a37;max-width:850px;margin:auto;padding:clamp(25px,5.8vw,60px);box-shadow:0 15px 45px #001a2b55;border-radius:4px}
+.resume-paper h1{font-size:23px;letter-spacing:.025em;margin:0 0 10px}
+.resume-paper h2{font-size:13px;letter-spacing:.07em;border-bottom:1px solid #ccd9dc;padding-bottom:7px;margin:25px 0 12px}
+.resume-paper .subtitle{font-weight:700;color:#245e5a}
+.resume-paper p{font-size:12px;line-height:1.5;margin:6px 0;overflow-wrap:anywhere}
+.resume-paper .bullet{padding-left:16px;position:relative}
+.resume-paper .bullet:before{content:"•";position:absolute;left:2px}
+@media(max-width:600px){.page-shell{padding:16px 12px 36px}.toolbar{margin-bottom:22px}.toolbar a,.toolbar button{flex:1 1 220px}.glass-frame{border-radius:18px;padding:10px}.resume-paper{padding:24px 18px}.intro p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.toolbar a,.toolbar button{transition:none}.toolbar a:hover,.toolbar button:hover{transform:none}}
+@media print{@page{size:A4;margin:14mm}:root{color-scheme:light}html,body{background:white!important;color:#152a37!important}body::before,.toolbar,.intro,.glass-frame::before{display:none!important}.page-shell,.glass-frame,.resume-paper{display:block;max-width:none;margin:0;padding:0;border:0;border-radius:0;background:white!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}.resume-paper h2{break-after:avoid}.resume-paper p{orphans:2;widows:2}}
