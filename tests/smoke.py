@@ -89,6 +89,9 @@ def check(axe_path=None):
                     # v3.5: arquitetura acessível e conteúdo operacional verificável
                     expect(page.get_by_role("heading", name="Arquitetura e controles operacionais")).to_have_count(1)
                     expect(page.locator(".case-pipeline li")).to_have_count(4)
+                    expect(page.locator(".case-pipeline li strong")).to_have_text(
+                        ["Entrada", "Tratamento", "Validação", "Saída e consulta"]
+                    )
                     page.set_viewport_size({"width": 390, "height": 844})
                     assert page.locator(".case-pipeline").evaluate(
                         "el => getComputedStyle(el).gridTemplateColumns.split(' ').length"
