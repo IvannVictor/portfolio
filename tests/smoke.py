@@ -149,7 +149,7 @@ def check(axe_path=None):
                     )
                     fallback = context.new_page()
                     fallback.goto(url)
-                    expect(fallback.get_by_role("navigation")).to_be_visible()
+                    expect(fallback.get_by_role("navigation", name="Navegação principal")).to_be_visible()
                     expect(fallback.locator('a[href="#projetos"]').first).to_be_visible()
                     expect(fallback.locator(".gallery-link")).to_have_count(7)
                     assert fallback.locator(".gallery-link").first.get_attribute("href").endswith("impressao.png")
