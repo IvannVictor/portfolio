@@ -1024,3 +1024,16 @@ button:disabled {
 .process-art .flow{display:flex;gap:8px;flex-wrap:wrap}
 .process-art .flow span{border:1px solid #547d7d;border-radius:8px;padding:9px 12px;font-size:.8rem}
 @media(max-width:720px){.hero-metrics{grid-template-columns:1fr}.hero-metrics>div{padding:14px}.process-art{min-height:230px}}
+
+/* Segunda etapa: hierarquia visual e interação */
+.hero-metrics>div{transition:transform .2s ease,border-color .2s ease}
+.hero-metrics>div:hover{transform:translateY(-3px);border-color:#4a817b}
+.projects-intro{max-width:68ch;margin:0 0 24px;color:var(--muted);font-size:.92rem}
+.study-divider{grid-column:1/-1;padding:32px 0 12px;border-top:1px solid var(--line);margin-top:18px}
+.study-divider .eyebrow{color:var(--accent);margin-bottom:12px}
+.study-divider h3{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:10px}
+.study-divider p:last-child{max-width:65ch;font-size:.9rem}
+.process-case{border-color:#3e6c69}
+.process-case .project-body h3{max-width:24ch}
+@media(prefers-reduced-motion:reduce){.hero-metrics>div{transition:none}.hero-metrics>div:hover{transform:none}}
+@media(max-width:760px){.study-divider{padding-top:24px}.projects-intro{font-size:.88rem}}
