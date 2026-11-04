@@ -23,7 +23,11 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/
-          cp -R css js images demos _site/
+          cp -R css js images demos curriculos _site/
+          test -f _site/curriculos/operacoes.html
+          test -f _site/curriculos/tecnologia.html
+          test -f _site/curriculos/fiscal-contabil.html
+          test -f _site/curriculos/liquid-glass.css
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
