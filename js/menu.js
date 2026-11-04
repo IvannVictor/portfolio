@@ -9,6 +9,7 @@ if (toggle && navigation) {
   function closeMenu({ restoreFocus = false } = {}) {
     toggle.setAttribute("aria-expanded", "false");
     navigation.hidden = mobile.matches;
+    navigation.removeAttribute("data-menu-open");
     if (restoreFocus) toggle.focus();
   }
 
@@ -21,6 +22,8 @@ if (toggle && navigation) {
     const opening = toggle.getAttribute("aria-expanded") !== "true";
     toggle.setAttribute("aria-expanded", String(opening));
     navigation.hidden = !opening;
+    if (opening) navigation.setAttribute("data-menu-open", "");
+    else navigation.removeAttribute("data-menu-open");
   });
 
   navigation.addEventListener("click", (event) => {
