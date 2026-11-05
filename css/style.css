@@ -1512,3 +1512,32 @@ body {
   .case-lead { padding: 12px; }
   .case-verification { padding: 16px; }
 }
+
+/* Identidade visual IV — reforço discreto, sem interferir no conteúdo */
+.brand-refined { gap: 12px; }
+.brand-refined img { flex: 0 0 auto; object-fit: contain; }
+.hero-copy { position: relative; isolation: isolate; }
+.hero-brand-watermark {
+  position: absolute; z-index: -1; pointer-events: none; user-select: none;
+  width: min(38vw, 420px); height: auto; right: -4%; top: 4%;
+  opacity: .075; filter: saturate(.85);
+}
+.about-signature { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.about-signature img { width: 36px; height: 36px; object-fit: contain; }
+.about-signature span { display: flex; flex-direction: column; gap: 3px; font-size: .8rem; font-weight: 750; letter-spacing: .09em; color: var(--ink); }
+.about-signature small { font-size: .59rem; font-weight: 500; letter-spacing: .055em; color: var(--muted); }
+.footer-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.footer-brand img { width: 44px; height: 44px; flex: 0 0 auto; object-fit: contain; }
+.footer-brand p { margin: 0; }
+.footer-brand p > span:not(.accent) { color: var(--muted); }
+@media (max-width: 760px) {
+  .brand-refined { gap: 9px; }
+  .brand-refined img { width: 38px; height: 38px; }
+  .hero-brand-watermark { width: 220px; right: -8px; top: 18px; opacity: .045; }
+  .about-signature { max-width: 100%; }
+  .about-signature small { line-height: 1.4; }
+  .footer-brand img { width: 38px; height: 38px; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .hero-brand-watermark { opacity: .025; }
+}
