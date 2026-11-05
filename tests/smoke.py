@@ -94,7 +94,7 @@ def check(axe_path=None):
                         page.locator(".menu-toggle").click()
                         assert page.locator("#navegacao").is_hidden()
                     # v3.7: prioridades de rede não competem com a imagem principal
-                    expect(page.locator('img[loading="lazy"][fetchpriority="low"]')).to_have_count(9)
+                    expect(page.locator('img[loading="lazy"][fetchpriority="low"]')).to_have_count(11)
                     expect(page.locator('img[loading="lazy"]:not([fetchpriority="low"])')).to_have_count(0)
                     expect(page.locator('img[src="images/victor-profile.webp"]')).to_have_attribute(
                         "fetchpriority", "high"
