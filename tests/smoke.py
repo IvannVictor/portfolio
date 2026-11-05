@@ -62,6 +62,17 @@ def check(axe_path=None):
                         for image in page.locator("img").all():
                             image.scroll_into_view_if_needed()
                             image.evaluate("""async image => {
+                                // Lazy images can still be loading immediately after scrolling.
+                                // Wait for the load/error event before checking decode.
+                                if (!image.complete) {
+                                    await new Promise((resolve, reject) => {
+                                        image.addEventListener('load', resolve, { once: true });
+                                        image.addEventListener('error', reject, { once: true });
+                                    });
+                                }
+                                if (image.naturalWidth === 0) {
+                                    throw new Error(`Image failed to load: ${image.currentSrc || image.src}`);
+                                }
                                 try { await image.decode(); }
                                 catch (error) { throw new Error(`Image decode failed: ${image.currentSrc || image.src} — ${error.message}`); }
                             }""")
