@@ -61,7 +61,21 @@ def check(axe_path=None):
                             .every(a => a.hash.length > 1 && document.getElementById(a.hash.slice(1)))""")
                         for image in page.locator("img").all():
                             image.scroll_into_view_if_needed()
-                            image.evaluate("image => image.decode()")
+                            image.evaluate("""async image => {
+                                // Lazy images can still be loading immediately after scrolling.
+                                // Wait for the load/error event before checking decode.
+                                if (!image.complete) {
+                                    await new Promise((resolve, reject) => {
+                                        image.addEventListener('load', resolve, { once: true });
+                                        image.addEventListener('error', reject, { once: true });
+                                    });
+                                }
+                                if (image.naturalWidth === 0) {
+                                    throw new Error(`Image failed to load: ${image.currentSrc || image.src}`);
+                                }
+                                try { await image.decode(); }
+                                catch (error) { throw new Error(`Image decode failed: ${image.currentSrc || image.src} — ${error.message}`); }
+                            }""")
                         if axe_path:
                             page.add_script_tag(path=str(axe_path))
                             result = page.evaluate("""async () => await axe.run(document, {
@@ -80,7 +94,7 @@ def check(axe_path=None):
                         page.locator(".menu-toggle").click()
                         assert page.locator("#navegacao").is_hidden()
                     # v3.7: prioridades de rede não competem com a imagem principal
-                    expect(page.locator('img[loading="lazy"][fetchpriority="low"]')).to_have_count(9)
+                    expect(page.locator('img[loading="lazy"][fetchpriority="low"]')).to_have_count(11)
                     expect(page.locator('img[loading="lazy"]:not([fetchpriority="low"])')).to_have_count(0)
                     expect(page.locator('img[src="images/victor-profile.webp"]')).to_have_attribute(
                         "fetchpriority", "high"
@@ -121,6 +135,9 @@ def check(axe_path=None):
                     expect(page.locator('meta[name="description"]')).to_have_count(1)
                     expect(page.locator('link[rel="icon"][type="image/svg+xml"]')).to_have_attribute("href", "images/ivan-victor-monograma.svg")
                     expect(page.locator('header img[src="images/ivan-victor-monograma.svg"]')).to_have_count(1)
+                    expect(page.locator(".hero-brand-watermark")).to_have_count(1)
+                    expect(page.locator(".about-signature img")).to_have_count(1)
+                    expect(page.locator(".footer-brand img")).to_have_count(1)
                     expect(page.locator('meta[property="og:image"]')).to_have_count(1)
                     expect(page.locator('meta[name="twitter:image"]')).to_have_count(1)
                     expect(page.locator('html')).to_have_attribute("lang", "pt-BR")
