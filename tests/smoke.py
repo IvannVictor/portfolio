@@ -13,6 +13,9 @@ from playwright.sync_api import expect, sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# Evita caracteres de escape literais visíveis no topo da página.
+assert r'type="image/svg+xml" />\n' not in (ROOT / "index.html").read_text(encoding="utf-8")
+
 
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *_args):
