@@ -61,7 +61,11 @@ def check(axe_path=None):
                             .every(a => a.hash.length > 1 && document.getElementById(a.hash.slice(1)))""")
                         for image in page.locator("img").all():
                             image.scroll_into_view_if_needed()
-                            image.evaluate("image => image.decode()")
+                            image.evaluate("""async image => {
+                                if (image.loading === "lazy") image.loading = "eager";
+                                try { await image.decode(); }
+                                catch (error) { throw new Error(`Image decode failed: ${image.currentSrc || image.src} — ${error.message}`); }
+                            }""")
                         if axe_path:
                             page.add_script_tag(path=str(axe_path))
                             result = page.evaluate("""async () => await axe.run(document, {
