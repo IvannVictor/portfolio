@@ -62,7 +62,6 @@ def check(axe_path=None):
                         for image in page.locator("img").all():
                             image.scroll_into_view_if_needed()
                             image.evaluate("""async image => {
-                                if (image.loading === "lazy") image.loading = "eager";
                                 try { await image.decode(); }
                                 catch (error) { throw new Error(`Image decode failed: ${image.currentSrc || image.src} — ${error.message}`); }
                             }""")
