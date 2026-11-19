@@ -1,4 +1,4 @@
-# Victor Azevedo — Portfólio
+# Ivan Victor — Portfólio
 
 Site estático em português, feito com HTML, CSS e JavaScript. Não depende de ferramentas de build, fontes externas ou bibliotecas de ícones.
 
@@ -71,21 +71,18 @@ As cópias em `demos/pokedex/`, `demos/tarefas/` e `demos/login/` derivam dos re
 
 O treinamento de frete não foi copiado para `demos/` por conter identificação empresarial. As URLs de GitHub Pages dos quatro projetos não puderam ser validadas neste ambiente: o proxy bloqueou o domínio. Isso não é evidência de indisponibilidade das páginas públicas.
 
-## Publicação preparada, sem execução automática
+## Publicação via GitHub Actions
 
-Foi incluído `.github/workflows/pages.yml`, com acionamento exclusivamente manual (`workflow_dispatch`). Ele prepara apenas `index.html`, `css/`, `js/`, `images/` e `demos/`, excluindo documentação, testes e outros arquivos da raiz do artefato público. Nenhum workflow de publicação foi executado nesta tarefa.
+O workflow `.github/workflows/pages.yml` é acionado em pushes na branch `main` e também manualmente. Antes do deploy, valida o artefato e executa os testes com Chromium. O artefato de publicação inclui site, imagens, demonstrações e currículos, sem expor os testes nem os documentos internos. Publicações exigem revisão e aprovação das alterações na branch principal.
 
-Após revisar os arquivos:
+Para realizar uma publicação aprovada:
 
-1. Envie as mudanças ao repositório GitHub quando decidir publicá-las.
-2. Em Settings → Pages, selecione GitHub Actions como fonte de publicação.
-3. Em Actions, execute manualmente “Publicar portfólio no GitHub Pages”.
-4. Use a URL informada pelo job `deploy` para conferir links, imagens e demonstrações.
-5. Envie uma mensagem de teste pelo formulário com seu próprio e-mail e confirme o recebimento. Confirme previamente o formulário na conta Formspree e o endereço destinatário.
-6. Configure domínio, URL canônica e imagem de compartilhamento depois de confirmar a URL pública. Não preencha esses campos com um domínio provisório ou não confirmado.
+1. Abra um pull request e confira os testes automáticos, a documentação e o diff.
+2. Após aprovação, integre as alterações à branch `main` conforme as regras de proteção configuradas no GitHub.
+3. O workflow de Pages publicará somente depois da validação estática e funcional bem-sucedida.
+4. Confirme links, imagens, navegação, acessibilidade e formulário real no site publicado.
 
-A publicação pode depender de permissões e configurações do GitHub; o workflow foi preparado, mas o deploy real ainda não foi testado.
-
+A criação de uma branch de auditoria não altera a versão pública. As regras de proteção de branches devem ser configuradas nas opções do repositório; os arquivos YAML, sozinhos, não impedem o push direto na `main`.
 
 ## Evolução profissional v2 (branch de revisão)
 
