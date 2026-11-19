@@ -58,12 +58,20 @@ def validate(root: Path) -> list[str]:
             )]
             if not locs or len(locs) != len(set(locs)):
                 errors.append("Sitemap vazio ou com URLs duplicadas")
-            required_urls = {
+            # Currículos contêm meta robots=noindex: não devem integrar o sitemap.
+            noindex_urls = {
                 f"{SITE_PREFIX}curriculos/{name}.html"
                 for name in ("operacoes", "tecnologia", "fiscal-contabil")
             }
-            if not required_urls.issubset(set(locs)):
-                errors.append("Currículos obrigatórios ausentes do sitemap")
+            if noindex_urls.intersection(locs):
+                errors.append("Páginas de currículo noindex indevidamente incluídas no sitemap")
+            for name in ("operacoes", "tecnologia", "fiscal-contabil"):
+                curriculum = root / "curriculos" / f"{name}.html"
+                if curriculum.is_file():
+                    markup = curriculum.read_text(encoding="utf-8").lower()
+                    if not ('name="robots" content="noindex"' in markup or
+                            "name='robots' content='noindex'" in markup):
+                        errors.append(f"Currículo sem indicação explícita de noindex: {name}")
             for loc in locs:
                 if not loc.startswith(SITE_PREFIX):
                     errors.append(f"URL fora do domínio esperado no sitemap: {loc}")
