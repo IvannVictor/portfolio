@@ -1,4 +1,4 @@
-# Victor Azevedo — Portfólio
+# Ivan Victor — Portfólio
 
 Site estático em português, feito com HTML, CSS e JavaScript. Não depende de ferramentas de build, fontes externas ou bibliotecas de ícones.
 
@@ -71,9 +71,9 @@ As cópias em `demos/pokedex/`, `demos/tarefas/` e `demos/login/` derivam dos re
 
 O treinamento de frete não foi copiado para `demos/` por conter identificação empresarial. As URLs de GitHub Pages dos quatro projetos não puderam ser validadas neste ambiente: o proxy bloqueou o domínio. Isso não é evidência de indisponibilidade das páginas públicas.
 
-## Publicação preparada, sem execução automática
+## Publicação via GitHub Actions
 
-Foi incluído `.github/workflows/pages.yml`, com acionamento exclusivamente manual (`workflow_dispatch`). Ele prepara apenas `index.html`, `css/`, `js/`, `images/` e `demos/`, excluindo documentação, testes e outros arquivos da raiz do artefato público. Nenhum workflow de publicação foi executado nesta tarefa.
+O workflow `.github/workflows/pages.yml` é acionado em pushes na branch `main` e também manualmente. Antes do deploy, valida o artefato e executa os testes com Chromium. O artefato de publicação inclui site, imagens, demonstrações e currículos, sem expor os testes nem os documentos internos. Publicações exigem revisão e aprovação das alterações na branch principal.
 
 Após revisar os arquivos:
 
