@@ -1,6 +1,7 @@
 """Contact integration checks with a mocked provider; never sends email."""
 import functools
 import http.server
+import os
 import shutil
 import threading
 from urllib.parse import parse_qs, urlsplit
@@ -22,7 +23,7 @@ def check():
         base = f'http://127.0.0.1:{server.server_port}/'
         try:
             with sync_playwright() as p:
-                browser = p.chromium.launch(executable_path=shutil.which('chromium'), args=['--no-sandbox'])
+                browser = p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('chromium') or None, args=['--no-sandbox'])
                 try:
                     page = browser.new_page()
                     requests = []

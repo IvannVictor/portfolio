@@ -25,7 +25,7 @@ if (contactForm) {
 
   function prepareEmail(data) {
     const body = `Nome: ${data.get("name")}\nE-mail: ${data.get("email")}\nCelular: ${data.get("phone") || "Não informado"}\n\n${data.get("message")}`;
-    prepared.href = `mailto:${recipient}?subject=${encodeURIComponent("Contato pelo portfólio de Victor Azevedo")}&body=${encodeURIComponent(body)}`;
+    prepared.href = `mailto:${recipient}?subject=${encodeURIComponent("Contato pelo portfólio de Ivan Victor")}&body=${encodeURIComponent(body)}`;
     prepared.hidden = false;
   }
 

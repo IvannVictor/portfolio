@@ -2,7 +2,8 @@ name: Validar portfólio
 on:
   push:
     branches:
-      - feature/portfolio-profissional-v2
+      - main
+      - 'audit/**'
   pull_request:
     branches:
       - main
@@ -28,6 +29,9 @@ jobs:
           CHROME=$(find "$HOME/.cache/ms-playwright" -type f \( -name chrome -o -name chromium \) | head -n 1)
           test -x "$CHROME"
           echo "CHROMIUM_PATH=$CHROME" >> "$GITHUB_ENV"
+      - name: Validar sintaxe JavaScript
+        run: |
+          for file in js/*.js; do node --check "$file"; done
       - name: Executar smoke tests
         run: python tests/smoke.py
       - name: Testar demonstrações

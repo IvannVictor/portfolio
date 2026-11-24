@@ -1,6 +1,5 @@
 name: Publicar portfólio no GitHub Pages
 
-# Publicar automaticamente após atualização aprovada da branch principal.
 on:
   push:
     branches:
@@ -19,10 +18,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Preparar artefato de publicação
-        run: python3 tests/build_site.py
-      - name: Validar páginas, sitemap e recursos publicados
-        run: python3 tests/published_site.py _site
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Montar e validar artefato de publicação
+        run: |
+          python tests/build_site.py
+          python tests/published_site.py _site
+      - name: Validar sintaxe JavaScript
+        run: |
+          for file in js/*.js; do node --check "$file"; done
+      - name: Instalar navegador e Playwright
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          CHROME=$(find "$HOME/.cache/ms-playwright" -type f \( -name chrome -o -name chromium \) | head -n 1)
+          test -x "$CHROME"
+          echo "CHROMIUM_PATH=$CHROME" >> "$GITHUB_ENV"
+      - name: Executar testes funcionais antes da publicação
+        run: |
+          python tests/smoke.py
+          python tests/demos.py
+          python tests/cases.py
+          python tests/contact.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
